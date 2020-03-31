@@ -10,6 +10,8 @@ header
         i.fas.fa-phone-alt.mt-1
       li.list-group.mr-5
         | 01-4444444
+
+  / =link_to "logout",destroy_user_session_path, method: :delete
 section
   nav.navbar.sticky-top.navbar-light.navbar-expand-lg.w-100.pt-0.me_sticky.container-fluid.bg-light
     =link_to root_path do
@@ -20,25 +22,25 @@ section
       span.navbar-toggler-icon
     #navbarNavDropdown.collapse.navbar-collapse
       ul.navbar-nav.ml-auto
-        li.nav-item.active.mr-5
+        li.nav-item.active.mr-5.fa-lg
           a.nav-link.font-weight-bolder.primaryText style=("color:#192f59 !important;") href="#{root_path}"
 
-            | Home
+            | गृह पृष्ठ
             span.sr-only (current)
-        li.nav-item.dropdown.mr-5
+        li.nav-item.dropdown.mr-5.fa-lg
           a#navbarDropdownMenuLink1.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            | About Us
+            | विद्यालय परिचय
           / .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
             a.dropdown-item href="/#runningProjects"  Running Projects
             a.dropdown-item href="/#completedProjects"  Completed Projects
-        li.nav-item.mr-5
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#clients"  Gallery
-        li.nav-item.mr-5
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams"  Notice
-        li.nav-item.mr-5
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams"  Team
-        li.nav-item
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#contact_us"  Contact Us
+        li.nav-item.mr-5.fa-lg
+          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#clients"  ग्यालरी
+        li.nav-item.mr-5.fa-lg
+          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams"  सुचना
+        li.nav-item.mr-5.fa-lg
+          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams" विद्यालय परिवार
+        li.nav-item.fa-lg
+          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#contact_us" सम्पर्क
 
 
 section#index
@@ -48,139 +50,158 @@ section#index
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 90vh; background-size: cover;"
           .card-img-overlay.d-flex.align-items-center
             .card.text-white.bg-dark.mb-3.ml-5 style=("max-width: 30rem;opacity:0.8;")
-              .card-body
-                h2.card-title Dark card title
-                p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+              .card-body.py-5
+                h1.card-title.fa-3x स्कूल नगरपालिका
+                p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
       .carousel-item
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 90vh; background-size: cover;"
           .card-img-overlay.d-flex.align-items-center
             .card.text-white.bg-dark.mb-3.ml-5 style=("max-width: 30rem;opacity:0.8;")
-              .card-body
-                h2.card-title Dark card title
-                p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+              .card-body.py-5
+                h2.card-title.fa-3x स्कूल नगरपालिका
+                p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
       .carousel-item
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 90vh ; background-size: cover;"
           .card-img-overlay.d-flex.align-items-center
             .card.text-white.bg-dark.mb-3.ml-5 style=("max-width: 30rem;opacity:0.8;")
-              .card-body
-                h2.card-title Dark card title
-                p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+              .card-body.py-5
+                h2.card-title.fa-3x स्कूल नगरपालिका
+                p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
 
+
+/ About section
 section style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 60vh; background-size: cover;"
   .row.mx-0
     .col-12.px-0 style=("background-color:#192f59 !important; height: 60vh;opacity:0.8;")
       .row.mx-0
         .col-3.px-0.d-flex.align-items-center
-          h3.card-title.text-success.font-weight-bold.mx-auto  About Our School
+          h3.card-title.text-success.font-weight-bold.mx-auto  स्कूलको परिचय
 
 
 
         .col-9.mt-5
           h5.card-text.text-light.text-justify.mt-5.about
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
-            |Some quick example text to build on the card title and make up the bulk of the card's content.
+            = About.last.description
 
+/ Facility section
 section
-  h2.text-center.my-5 Our Facilities
+  h2.text-center.my-5 विद्यालय सुविधा
   .row.mx-0
-    .col-4.px-0
-      .card.mb-3.border-0
-        .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=("background-color:#192f59 !important;") Library
-        .card-body.text-success style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-        .card-footer.bg-transparent.text-justify A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot.
-    .col-4.px-0
-      .card.mb-3.border-0
-        .card-header.bg-transparent.font-weight-bold.fa-lg.py-5.text-center.text-light style=("background-color:#192f59 !important;opacity:0.96;") Computer Lab
-        .card-body.text-success style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-        .card-footer.bg-transparent.text-justify A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot.
-    .col-4.px-0
-      .card.mb-3.border-0
-        .card-header.bg-transparent.font-weight-bold.fa-lg.py-5.text-center.text-light style=("background-color:#192f59 !important;opacity:0.92;") Transportation
-        .card-body.text-success style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-        .card-footer.bg-transparent.text-justify A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot.
+    - Facility.all[0...1].each do |infrastructure|
+      .col-4.px-0
+        .card.mb-3.border-0
+          .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
+            =infrastructure.name
+          -if infrastructure.image.attached?
+            .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+          .card-footer.bg-transparent.text-justify
+            = infrastructure.description
+    - Facility.all[1...2].each do |infrastructure|
+      .col-4.px-0
+        .card.mb-3.border-0
+          .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.96;')
+            = infrastructure.name
+          - if infrastructure.image.attached?
+            .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+          .card-footer.bg-transparent.text-justify
+            = infrastructure.description
+    - Facility.all[2...3].each do |infrastructure|
+      .col-4.px-0
+        .card.mb-3.border-0
+          .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.92;')
+            = infrastructure.name
+          - if infrastructure.image.attached?
+            .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+          .card-footer.bg-transparent.text-justify
+            = infrastructure.description
 
 
 section.my-5.bg-light
-  h2.text-center.my-5 Events
+  h2.text-center.my-5 कार्यक्रम सूचना
   .row.mx-0.my-5
-    .col-4.mb-5
-      .card.mb-3 style=("max-width: 540px;")
-        .row.no-gutters
-          .col-md-3.bg-secondary
-            h4.mt-5.text-light.text-center
-              | 10 dec
-          .col-md-9
-            .card-body.pr-1.pl-2
-              h6.card-title.font-weight-bold Card title
-              p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
-              p.card-text
-                small.text-muted Last updated 3 mins ago
-    .col-4
-      .card.mb-3 style=("max-width: 540px;")
-        .row.no-gutters
-          .col-md-3.bg-secondary
-            h4.mt-5.text-light.text-center
-              | 10 dec
-          .col-md-9
-            .card-body.pr-1.pl-2
-              h6.card-title.font-weight-bold Card title
-              p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
-              p.card-text
-                small.text-muted Last updated 3 mins ago
-    .col-4
-      .card.mb-3 style=("max-width: 540px;")
-        .row.no-gutters
-          .col-md-3.bg-secondary
-            h4.mt-5.text-light.text-center
-              | 10 dec
-          .col-md-9
-            .card-body.pr-1.pl-2
-              h6.card-title.font-weight-bold Card title
-              p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
-              p.card-text
-                small.text-muted Last updated 3 mins ago
+    - Notice.all.each do |information|
+      .col-4.mb-5
+        .card.mb-3 style=("max-width: 540px;")
+          .row.no-gutters
+            / .col-md-3.bg-secondary
+            /   h4.mt-5.text-light.text-center
+            /     = information.published
+            .col-md-12
+              .card-body.pr-1.pl-2
+                h6.card-title.font-weight-bold.text-primary.border-bottom
+                  = information.title
+                p.card-text
+                  = information.description
+                p.card-text
+                  small.text-muted
+                    |Published : &nbsp;
+                  span
+                    = information.published
+    / .col-4
+    /   .card.mb-3 style=("max-width: 540px;")
+    /     .row.no-gutters
+    /       .col-md-3.bg-secondary
+    /         h4.mt-5.text-light.text-center
+    /           | 10 dec
+    /       .col-md-9
+    /         .card-body.pr-1.pl-2
+    /           h6.card-title.font-weight-bold Card title
+    /           p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
+    /           p.card-text
+    /             small.text-muted Last updated 3 mins ago
+    / .col-4
+    /   .card.mb-3 style=("max-width: 540px;")
+    /     .row.no-gutters
+    /       .col-md-3.bg-secondary
+    /         h4.mt-5.text-light.text-center
+    /           | 10 dec
+    /       .col-md-9
+    /         .card-body.pr-1.pl-2
+    /           h6.card-title.font-weight-bold Card title
+    /           p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
+    /           p.card-text
+    /             small.text-muted Last updated 3 mins ago
 
 section.my-5
-  h2.text-center.my-5 Our Gallery
+  h2.text-center.my-5 ग्यालरी
   .row.mx-0.border
-    .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
+    - Gallery.all.sample(6).each do |photo|
+      -if photo.image.attached?
+        .col-4.border style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
+    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
+    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
+    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
+    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
+    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
 
 
 section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
   h1.my-5.text-center.pt-4
-    |Our Team
+    | व्यवस्थापन सदस्य
   #carouselExampleControls.carousel.slide.d-none.d-md-block data-ride="carousel"
     .carousel-inner
       .carousel-item.active
         .col-12.d-none.d-flex.justify-content-around
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
+          - Team.all[0..2].each do |member|
+            .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
+              -if member.image.attached?
+                div.img-thumbnail style="background: url(#{url_for(member.image)}) no-repeat; height: 200px; background-size: cover;"
+              / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
+              .card-body.bg-light.border
+                h4.card-text.text-danger.text-center  =member.name
+                p.card-text.text-dark.text-justify.text-center  =member.designation
+          / .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
+          /   div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
+          /   / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
+          /   .card-body.bg-light.border
+          /     h4.card-text.text-danger.text-center  name
+          /     p.card-text.text-dark.text-justify  description
+          / .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
+          /   div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
+          /   / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
+          /   .card-body.bg-light.border
+          /     h4.card-text.text-danger.text-center  name
+          /     p.card-text.text-dark.text-justify  description
       .carousel-item
         .col-12.d-flex.justify-content-around
           .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
@@ -229,7 +250,7 @@ section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
       span.sr-only Next
 
 section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-duration="2s"
-  h2.text-center.my-5.pt-4 Contact us
+  h2.text-center.my-5.pt-4 सम्पर्क
   .row
     .col-md-6
       div style="width = 300px;"
@@ -240,19 +261,19 @@ section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-du
     .col-md-6
       form
         .form-group
-          label for="exampleInputEmail1"  Your Name
-          input#exampleInputEmail1.form-control aria-describedby="emailHelp" placeholder=("Name") type="email" /
+          label for="exampleInputEmail1"  तपाइँको नाम
+          input#exampleInputEmail1.form-control aria-describedby="emailHelp" placeholder=("नाम") type="email" /
         / small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
         .form-group.mt-3
-          label for="exampleInputPassword1"  Email
-          input#exampleInputPassword1.form-control placeholder="Email"  /
+          label for="exampleInputPassword1"  ईमेल
+          input#exampleInputPassword1.form-control placeholder="ईमेल"  /
         .form-group.mt-3
-          label for="exampleInputPassword1"  Subject
-          input.form-control placeholder="Subject"  /
+          label for="exampleInputPassword1"  विषय
+          input.form-control placeholder="विषय"  /
         .form-group.mt-3
-          label for="exampleInputPassword1"  Your Message
-          textarea.w-100.form-control placeholder="Message"
-        button.btn.btn-primary.btn-lg.text-ligh.mx-auto.p-1 Submit
+          label for="exampleInputPassword1"  तपाइँको सन्देश
+          textarea.w-100.form-control placeholder="तपाइँको सन्देश"
+        button.btn.btn-primary.btn-lg.text-ligh.mx-auto.p-1 बुझाउनुहोस्
 /! Footer
 footer.page-footer.font-small.bg-dark.text-light.pt-4
   /! Footer Links
