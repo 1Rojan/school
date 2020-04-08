@@ -1,1 +1,42 @@
-h2 sidebar
+.row.border.text-center.pt-1
+  .col-12
+    = link_to dashboards_path
+      = image_tag "logo.png", style: "width:85px;margin-top:0px"
+  .col-12.toggleHide
+.row
+  .col-12.pr-0.border-right
+    .sidebar.bg-white
+      nav
+        ul.nav.mt-5
+          = link_to dashboards_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-home.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'dashboard'
+          = link_to abouts_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-thumbs-up.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'about'
+          = link_to facilities_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-sticky-note.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'facility'
+          = link_to galleries_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-user.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'gallery'
+          = link_to notices_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-building.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'notice'
+          = link_to teams_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-users.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'team'
+          = link_to team_categories_path, class: 'w-100 text-decoration-none'
+            li.nav-item.text-secondary.p-3
+              i.fas.fa-images.mr-4.text-dark.fa-lg
+              span.toggleHide = t 'TeamCategory'
+          / = link_to abouts_path, class: 'w-100 text-decoration-none'
+          / li.nav-item.text-secondary.p-3
+          /   i.fas.fa-comment-alt.mx-4.text-dark.fa-lg
+          /   span.toggleHide = t 'about_us'

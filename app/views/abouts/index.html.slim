@@ -1,0 +1,26 @@
+h1.text-center.my-4 About
+/ = link_to new_about_path
+  btn.btn-sm.btn-primary.text-light
+    | Add About
+    i.fas.fa-plus-circle.ml-2
+table.table.table-.w-100.table-hover
+  thead
+    tr
+      th S.n
+      th Description
+      th Action
+      th
+
+  tbody
+    - @abouts.each.with_index(1) do |about, index|
+      tr
+        td = index
+        / td = order.comment
+        td.text-justify = about.description
+        td.pr-0
+          = link_to about
+            i.fas.fa-eye.text-info.mr-1
+          = link_to edit_about_path(about)
+            i.fas.fa-pencil-alt.text-info.ml-1
+            / = link_to about, data: {confirm: 'Are you sure?'}, method: :delete
+            i.fas.fa-trash.text-danger.ml-1

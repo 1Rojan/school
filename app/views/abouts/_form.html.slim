@@ -1,0 +1,26 @@
+.row
+  .col-11.offset-1.mt-3
+    = form_for @about, :html => {:style => 'background-color:whitesmoke;'} do |f|
+      - if @about.errors.any?
+        #error_explanation1
+          h2 = "#{pluralize(@about.errors.count, "error")} prohibited this food_category from being saved:"
+          ul
+            - @about.errors.full_messages.each do |message|
+              li = message
+      .row.mt-5
+        .col-10
+          table
+            tr
+              td
+                = f.label :title
+            tr
+              td
+                = f.text_field :title, class:'form-control mb-3'
+            tr
+              td
+                = f.label :description
+            tr
+              td
+                = f.text_area :description, size: "80x10", class: 'form-control'
+
+      .actions= f.submit

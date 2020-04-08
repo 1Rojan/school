@@ -11,84 +11,207 @@ team_images = Dir[Rails.root.join('app/assets/images/team', '*.*')]
 gallery_images = Dir[Rails.root.join('app/assets/images/gallery', '*.*')]
 
 #
-# admin = User.create(
-#   email: 'admin@ideabreed.net',
-#   password: 'password',
-#   username: 'admin')
-#
-#   if admin.persisted?
-#     puts 'admin created'
-#   else
-#     puts admin.errors.messages
-#   end
-#
-# members = ['राम', 'श्याम', 'गीता', 'सीता' , 'हरि', 'कुमार']
-# designations = ['संस्थापक अध्यक्ष', 'संस्थापक निर्देशक', 'अध्यक्ष', 'वित्त निर्देशक', 'कर्पोरेट निर्देशक', 'प्रिन्सिपल']
-# count= 0
-#
-#  members.each do |member|
-#   team = Team.create(
-#   name: member,
-#   designation: designations[count],
-#   description: "#{member}"+' '+ 'is one of our member of our school who is very expertise on the field and has been helping out each member and students to make a bright future.'
-#   )
-#   count+=1
-#
-#   if team.persisted?
-#     puts 'team created'
-#   else
-#     puts team.errors.messages
-#   end
-#   io_files1 = team_images.sample(1)
-#
-#   io_files1[0...1].each do |f|
-#
-#     image = File.open(f)
-#
-#     team.image.attach io: image, filename: f.split('/').last
-#
-#     image.close
-#   end
-# end
-#
-# facilities = ['पुस्तकालय', 'कम्प्युटर प्रयोगशाला', 'विद्यालयको गाडी', 'खेल मैदान', 'शैक्षिक भ्रमण', 'अतिरिक्त पाठ्यक्रम']
-#
-#  facilities.each do |facility|
-#   facilities = Facility.create(
-#     name: facility,
-#     description: 'हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ | '
-#   )
-#
-#   if facilities.persisted?
-#     puts "facility created"
-#   else
-#     puts facilities.errors.messages
-#   end
-#
-#   io_files1 = facilitiesImage.sample(1)
-#
-#   io_files1[0...1].each do |f|
-#
-#     image = File.open(f)
-#
-#     facilities.image.attach io: image, filename: f.split('/').last
-#
-#     image.close
-#   end
-# end
-#
-# 3.times do
-#   notices = Notice.create(
-#       title: '१२ औं / जेटीआई इन्टर स्कूल जेआर। खुला टेनिस चैम्पियनशिप',
-#       description: 'हामी तपाइँलाई जानकारी गराउन चाहन्छौं कि स्कूलमा यो कार्यक्रम चाँडै आयोजित हुँदैछ। हामी तपाइँलाई जानकारी गराउन चाहन्छौं कि स्कूलमा यो कार्यक्रम चाँडै आयोजित हुँदैछ।',
-#       published: Date.today
-#   )
-#    if notices.persisted?
-#      puts "notice created"
-#    else
-#      notices.errors.messages
-#    end
-# end
+admin = User.create(
+  email: 'admin@ideabreed.net',
+  password: 'password',
+  username: 'admin')
+
+  if admin.persisted?
+    puts 'admin created'
+  else
+    puts admin.errors.messages
+  end
+
+ # // team category
+team_categories = ['व्यवस्थापन समिति', 'अक्षयकोष संस्थापक व्यक्तित्वहरू', 'विद्यालयका शिक्षकहरु', 'विद्यार्थी']
+  team_categories.each do |category|
+    teamCategory = TeamCategory.create(
+        name: category
+    )
+    if teamCategory.persisted?
+      puts "team category created"
+    else
+      puts teamCategory.errors.messages
+    end
+  end
+
+
+ # team members 1
+team_category = ['व्यवस्थापन समिति', 'अक्षयकोष संस्थापक व्यक्तित्वहरू', 'विद्यालयका शिक्षकहरु', 'विद्यार्थी']
+members = ['राम', 'श्याम', 'गीता', 'सीता' , 'हरि', 'कुमार']
+designations = ['संस्थापक अध्यक्ष', 'संस्थापक निर्देशक', 'अध्यक्ष', 'वित्त निर्देशक', 'कर्पोरेट निर्देशक', 'प्रिन्सिपल']
+count = 0
+
+team_category[0...1].each do |category|
+ members.each do |member|
+  team = Team.create(
+  name: member,
+  designation: designations[count],
+  description: "#{member}"+' '+ 'is one of our member of our school who is very expertise on the field and has been helping out each member and students to make a bright future.',
+  team_category_id: 1
+  )
+  count+=1
+
+  if team.persisted?
+    puts 'team1 created'
+  else
+    puts team.errors.messages
+  end
+  io_files1 = team_images.sample(1)
+
+  io_files1[0...1].each do |f|
+
+    image = File.open(f)
+
+    team.image.attach io: image, filename: f.split('/').last
+
+    image.close
+  end
+ end
+end
+# team members 2
+team_category = ['व्यवस्थापन समिति', 'अक्षयकोष संस्थापक व्यक्तित्वहरू', 'विद्यालयका शिक्षकहरु', 'विद्यार्थी']
+members = ['राम', 'श्याम', 'गीता', 'सीता' , 'हरि', 'कुमार']
+designations = ['संस्थापक अध्यक्ष', 'संस्थापक निर्देशक', 'अध्यक्ष', 'संस्थापक अध्यक्ष', 'संस्थापक निर्देशक', 'अध्यक्ष']
+count = 0
+
+team_category[1...2].each do |category|
+  members.each do |member|
+    team = Team.create(
+        name: member,
+        designation: designations[count],
+        description: "#{member}"+' '+ 'is one of our member of our school who is very expertise on the field and has been helping out each member and students to make a bright future.',
+        team_category_id: 2
+      )
+    count+=1
+
+    if team.persisted?
+      puts 'team2 created'
+    else
+      puts team.errors.messages
+    end
+    io_files1 = team_images.sample(1)
+
+    io_files1[0...1].each do |f|
+
+      image = File.open(f)
+
+      team.image.attach io: image, filename: f.split('/').last
+
+      image.close
+    end
+  end
+end
+
+# team members 3
+team_category = ['व्यवस्थापन समिति', 'अक्षयकोष संस्थापक व्यक्तित्वहरू', 'विद्यालयका शिक्षकहरु', 'विद्यार्थी']
+members = ['राम', 'श्याम', 'गीता', 'सीता' , 'हरि', 'कुमार']
+designations = ['अङ्ग्रेजी', 'नेपाली', 'अध्यक्ष', 'अर्थशास्त्र', 'जनसंख्या']
+count = 0
+
+team_category[2...3].each do |category|
+  members.each do |member|
+    team = Team.create(
+        name: member,
+        designation: designations[count],
+        description: "#{member}"+' '+ 'is one of our member of our school who is very expertise on the field and has been helping out each member and students to make a bright future.',
+        team_category_id: 3
+    )
+    count+=1
+
+    if team.persisted?
+      puts 'team3 created'
+    else
+      puts team.errors.messages
+    end
+    io_files1 = team_images.sample(1)
+
+    io_files1[0...1].each do |f|
+
+      image = File.open(f)
+
+      team.image.attach io: image, filename: f.split('/').last
+
+      image.close
+    end
+  end
+end
+
+# team members 4
+team_category = ['व्यवस्थापन समिति', 'अक्षयकोष संस्थापक व्यक्तित्वहरू', 'विद्यालयका शिक्षकहरु', 'विद्यार्थी']
+classes = ['कक्षा १०', 'कक्षा ९', 'कक्षा ८', 'कक्षा ७' , 'कक्षा ६', 'कक्षा ५']
+count = 0
+
+team_category[3...4].each do |category|
+  classes.each do |member|
+    team = Team.create(
+        name: member,
+        designation: '२०७६',
+        description: "#{member}"+' '+ 'is one of our member of our school who is very expertise on the field and has been helping out each member and students to make a bright future.',
+        team_category_id: 4
+    )
+    count+=1
+
+    if team.persisted?
+      puts 'team4 created'
+    else
+      puts team.errors.messages
+    end
+    io_files1 = team_images.sample(1)
+
+    io_files1[0...1].each do |f|
+
+      image = File.open(f)
+
+      team.image.attach io: image, filename: f.split('/').last
+
+      image.close
+    end
+  end
+end
+
+
+
+
+
+facilities = ['पुस्तकालय', 'कम्प्युटर प्रयोगशाला', 'विद्यालयको गाडी', 'खेल मैदान', 'शैक्षिक भ्रमण', 'अतिरिक्त पाठ्यक्रम']
+
+ facilities.each do |facility|
+  facilities = Facility.create(
+    name: facility,
+    description: 'हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ |हामीले निरन्तर रुपमा यो सेवा उपलब्ध गराउदै अएका छौ | '
+  )
+
+  if facilities.persisted?
+    puts "facility created"
+  else
+    puts facilities.errors.messages
+  end
+
+  io_files1 = facilitiesImage.sample(1)
+
+  io_files1[0...1].each do |f|
+
+    image = File.open(f)
+
+    facilities.image.attach io: image, filename: f.split('/').last
+
+    image.close
+  end
+end
+
+6.times do
+  notices = Notice.create(
+      title: '१२ औं / जेटीआई इन्टर स्कूल जेआर। खुला टेनिस चैम्पियनशिप',
+      description: 'हामी तपाइँलाई जानकारी गराउन चाहन्छौं कि स्कूलमा यो कार्यक्रम चाँडै आयोजित हुँदैछ। हामी तपाइँलाई जानकारी गराउन चाहन्छौं कि स्कूलमा यो कार्यक्रम चाँडै आयोजित हुँदैछ।',
+      published: Date.today
+  )
+   if notices.persisted?
+     puts "notice created"
+   else
+     notices.errors.messages
+   end
+end
 
 6.times do
   galleries = Gallery.create(

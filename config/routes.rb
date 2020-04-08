@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :notices
   resources :teams
   resources :galleries
-  resources :about
+  resources :abouts
   resources :facilities
   resources :dashboards
+  resources :displays
+  resources :team_categories
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root "pages#index"
