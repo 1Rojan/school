@@ -1,0 +1,10 @@
+.col-12.mt-5.d-flex.justify-content-center
+  .card.shadow-lg.p-3.mb-5.bg-white.rounded
+    - if @gallery.image.attached?
+      = image_tag @gallery.image, style: 'height:400px'
+    .card-body
+      h5.card-title.text-center.font-weight-bold = @gallery.description
+      span
+    .card-body
+      = link_to 'Edit', edit_about_path(@gallery),class: 'card-link'
+      = link_to 'Back', galleries_path,class: 'card-link'

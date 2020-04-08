@@ -64,12 +64,20 @@ ActiveRecord::Schema.define(version: 2020_03_31_083856) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "team_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "designation"
     t.string "description"
+    t.bigint "team_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_category_id"], name: "index_teams_on_team_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,4 +94,5 @@ ActiveRecord::Schema.define(version: 2020_03_31_083856) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "teams", "team_categories"
 end
