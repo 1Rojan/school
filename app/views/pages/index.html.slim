@@ -1,48 +1,3 @@
-header
-  section
-    ul.list-group.list-group-horizontal.w-100.text-light.d-flex.justify-content-end.py-2 style="background: #192f59;"
-      li.list-group.mr-3
-        i.far.fa-envelope.mt-1
-      li.list-group.mr-5
-        | school@gmail.com
-
-      li.list-group.mr-3
-        i.fas.fa-phone-alt.mt-1
-      li.list-group.mr-5
-        | 01-4444444
-
-  / =link_to "logout",destroy_user_session_path, method: :delete
-section
-  nav.navbar.sticky-top.navbar-light.navbar-expand-lg.w-100.pt-0.me_sticky.container-fluid.bg-light
-    =link_to root_path do
-      div style='background: url("#{asset_path("logo.png")}");height:80px;width:100px;background-size:contain'
-    / =image_tag("uniquehydro.jpg")
-    / a.navbar-brand href="#"  Unique Hydro
-    button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button"
-      span.navbar-toggler-icon
-    #navbarNavDropdown.collapse.navbar-collapse
-      ul.navbar-nav.ml-auto
-        li.nav-item.active.mr-5.fa-lg
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59 !important;") href="#{root_path}"
-
-            | गृह पृष्ठ
-            span.sr-only (current)
-        li.nav-item.dropdown.mr-5.fa-lg
-          a#navbarDropdownMenuLink1.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            | विद्यालय परिचय
-          / .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
-            a.dropdown-item href="/#runningProjects"  Running Projects
-            a.dropdown-item href="/#completedProjects"  Completed Projects
-        li.nav-item.mr-5.fa-lg
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#clients"  ग्यालरी
-        li.nav-item.mr-5.fa-lg
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams"  सुचना
-        li.nav-item.mr-5.fa-lg
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams" विद्यालय परिवार
-        li.nav-item.fa-lg
-          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#contact_us" सम्पर्क
-
-
 section#index
   #carouselExampleSlidesOnly.carousel.slide data-ride="carousel"
     .carousel-inner
@@ -87,39 +42,80 @@ section style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; heig
 section
   h2.text-center.my-5 विद्यालय सुविधा
   .row.mx-0
-    - Facility.all[0...1].each do |infrastructure|
-      .col-4.px-0
-        .card.mb-3.border-0
-          .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
-            =infrastructure.name
-          -if infrastructure.image.attached?
-            .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
-          .card-footer.bg-transparent.text-justify
-            = infrastructure.description
-    - Facility.all[1...2].each do |infrastructure|
-      .col-4.px-0
-        .card.mb-3.border-0
-          .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.96;')
-            = infrastructure.name
-          - if infrastructure.image.attached?
-            .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
-          .card-footer.bg-transparent.text-justify
-            = infrastructure.description
-    - Facility.all[2...3].each do |infrastructure|
-      .col-4.px-0
-        .card.mb-3.border-0
-          .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.92;')
-            = infrastructure.name
-          - if infrastructure.image.attached?
-            .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
-          .card-footer.bg-transparent.text-justify
-            = infrastructure.description
+    #carouselExampleControls1.carousel.slide.d-none.d-md-block data-ride="carousel"
+      .carousel-inner
+        .carousel-item.active
+          .col-12.d-none.d-flex.justify-content-around
+            - Facility.all[0...1].each do |infrastructure|
+              .col-4.px-0
+                .card.mb-3.border-0
+                  .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
+                    = infrastructure.name
+                  - if infrastructure.image.attached?
+                    .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+                  .card-footer.bg-transparent.text-justify
+                    = infrastructure.description
+            - Facility.all[1...2].each do |infrastructure|
+              .col-4.px-0
+                .card.mb-3.border-0
+                  .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.96;')
+                    = infrastructure.name
+                  - if infrastructure.image.attached?
+                    .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+                  .card-footer.bg-transparent.text-justify
+                    = infrastructure.description
+            - Facility.all[2...3].each do |infrastructure|
+              .col-4.px-0
+                .card.mb-3.border-0
+                  .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.92;')
+                    = infrastructure.name
+                  - if infrastructure.image.attached?
+                    .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+                  .card-footer.bg-transparent.text-justify
+                    = infrastructure.description
+        - TeamCategory.first.team.all.each_slice(3) do |member|
+          .carousel-item
+            .col-12.d-flex.justify-content-around
+              - Facility.all[0...1].each do |infrastructure|
+                .col-4.px-0
+                  .card.mb-3.border-0
+                    .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
+                      = infrastructure.name
+                    - if infrastructure.image.attached?
+                      .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+                    .card-footer.bg-transparent.text-justify
+                      = infrastructure.description
+              - Facility.all[1...2].each do |infrastructure|
+                .col-4.px-0
+                  .card.mb-3.border-0
+                    .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.96;')
+                      = infrastructure.name
+                    - if infrastructure.image.attached?
+                      .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+                    .card-footer.bg-transparent.text-justify
+                      = infrastructure.description
+              - Facility.all[2...3].each do |infrastructure|
+                .col-4.px-0
+                  .card.mb-3.border-0
+                    .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.92;')
+                      = infrastructure.name
+                    - if infrastructure.image.attached?
+                      .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+                    .card-footer.bg-transparent.text-justify
+                      = infrastructure.description
+      a.carousel-control-prev.mt-5 data-slide="prev" href="#carouselExampleControls1" role="button" style="width:50px;"
+        span.carousel-control-prev-icon.bg-dark aria-hidden="true"
+        span.sr-only Previous
+      a.carousel-control-next data-slide="next" href="#carouselExampleControls1" role="button" style="width:50px;"
+        span.carousel-control-next-icon.bg-dark aria-hidden="true"
+        span.sr-only Next
+
 
 
 section.my-5.bg-light
   h2.text-center.my-5 कार्यक्रम सूचना
   .row.mx-0.my-5
-    - Notice.all.each do |information|
+    - Notice.all[0..2].each do |information|
       .col-4.mb-5
         .card.mb-3 style=("max-width: 540px;")
           .row.no-gutters
@@ -137,30 +133,6 @@ section.my-5.bg-light
                     |Published : &nbsp;
                   span
                     = information.published
-    / .col-4
-    /   .card.mb-3 style=("max-width: 540px;")
-    /     .row.no-gutters
-    /       .col-md-3.bg-secondary
-    /         h4.mt-5.text-light.text-center
-    /           | 10 dec
-    /       .col-md-9
-    /         .card-body.pr-1.pl-2
-    /           h6.card-title.font-weight-bold Card title
-    /           p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
-    /           p.card-text
-    /             small.text-muted Last updated 3 mins ago
-    / .col-4
-    /   .card.mb-3 style=("max-width: 540px;")
-    /     .row.no-gutters
-    /       .col-md-3.bg-secondary
-    /         h4.mt-5.text-light.text-center
-    /           | 10 dec
-    /       .col-md-9
-    /         .card-body.pr-1.pl-2
-    /           h6.card-title.font-weight-bold Card title
-    /           p.card-text This is a wider card with supporting text below as a natural lead-in to additional content.
-    /           p.card-text
-    /             small.text-muted Last updated 3 mins ago
 
 section.my-5
   h2.text-center.my-5 ग्यालरी
@@ -177,12 +149,12 @@ section.my-5
 
 section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
   h1.my-5.text-center.pt-4
-    | व्यवस्थापन सदस्य
+    = TeamCategory.first.name
   #carouselExampleControls.carousel.slide.d-none.d-md-block data-ride="carousel"
     .carousel-inner
       .carousel-item.active
         .col-12.d-none.d-flex.justify-content-around
-          - Team.all[0..2].each do |member|
+          - TeamCategory.first.team[0..2].each do |member|
             .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
               -if member.image.attached?
                 div.img-thumbnail style="background: url(#{url_for(member.image)}) no-repeat; height: 200px; background-size: cover;"
@@ -190,58 +162,17 @@ section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
               .card-body.bg-light.border
                 h4.card-text.text-danger.text-center  =member.name
                 p.card-text.text-dark.text-justify.text-center  =member.designation
-          / .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-          /   div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-          /   / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-          /   .card-body.bg-light.border
-          /     h4.card-text.text-danger.text-center  name
-          /     p.card-text.text-dark.text-justify  description
-          / .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-          /   div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-          /   / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-          /   .card-body.bg-light.border
-          /     h4.card-text.text-danger.text-center  name
-          /     p.card-text.text-dark.text-justify  description
-      .carousel-item
-        .col-12.d-flex.justify-content-around
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-      .carousel-item
-        .col-12.d-flex.justify-content-around
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-            div.img-thumbnail style="background: url(#{asset_path("library.jpg")}) no-repeat; height: 200px; background-size: cover;"
-            / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-            .card-body.bg-light.border
-              h4.card-text.text-danger.text-center  name
-              p.card-text.text-dark.text-justify  description
+      - TeamCategory.first.team.all.each_slice(3) do |member|
+        .carousel-item
+          .col-12.d-flex.justify-content-around
+            -member.each do |mem|
+              .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
+                - if mem.image.attached?
+                  div.img-thumbnail style="background: url(#{url_for(mem.image)}) no-repeat; height: 200px; background-size: cover;"
+                / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
+                .card-body.bg-light.border
+                  h4.card-text.text-danger.text-center = mem.name
+                  p.card-text.text-dark.text-justify.text-center = mem.designation
     a.carousel-control-prev.mt-5 data-slide="prev" href="#carouselExampleControls" role="button" style="width:50px;"
       span.carousel-control-prev-icon.bg-dark aria-hidden="true"
       span.sr-only Previous
@@ -274,107 +205,10 @@ section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-du
           label for="exampleInputPassword1"  तपाइँको सन्देश
           textarea.w-100.form-control placeholder="तपाइँको सन्देश"
         button.btn.btn-primary.btn-lg.text-ligh.mx-auto.p-1 बुझाउनुहोस्
-/! Footer
-footer.page-footer.font-small.bg-dark.text-light.pt-4
-  /! Footer Links
-  .container.text-center.text-md-left
-    /! Grid row
-    .row
-      /! Grid column
-      .col-md-4.mx-auto
-        /! Content
-        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Footer Content
-        p
-          | Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          | consectetur
-          | adipisicing elit.
-      /! Grid column
-      hr.clearfix.w-100.d-md-none/
-      /! Grid column
-      .col-md-3.mx-auto
-        /! Links
-        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Navigation Links
-        ul.list-unstyled.text-light
-          li
-            a.text-light href="#!"  Home
-          li
-            a.text-light href="#!"  About Us
-          li
-            a.text-light href="#!"  Gallery
-          li
-            a.text-light   href="#!"  Notice
-          / li
-            a href="#!"  Team
-          li
-            a.text-light href="#!"  Contact Us
-      /! Grid column
-      hr.clearfix.w-100.d-md-none
-      /! Grid column
-      .col-md-2.mx-auto
-        /! Links
-        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Information
-        ul.list-unstyled
-          li
-            a href="#!"  Link 1
-          li
-            a href="#!"  Link 2
-          li
-            a href="#!"  Link 3
-          li
-            a href="#!"  Link 4
-      /! Grid column
-      hr.clearfix.w-100.d-md-none
-      /! Grid column
-      .col-md-3.ml-auto
-        /! Links
-        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Contact Us
-        ul.list-unstyled
-          li
-            i.fas.fa-map-marker-alt.mr-2
-            | &nbsp; Kathmandu, Nepal
-          li
-            i.fas.fa-phone-alt.mt-3.mr-2
-            | &nbsp; 01-4444444
-          li
-            i.far.fa-envelope.mt-3.mr-2
-            | &nbsp; info@gmail.com
-
-  /! Grid column
-  /! Grid row
-  /! Footer Links
-  hr
-  / /! Call to action
-  / ul.list-unstyled.list-inline.text-center.py-2
-  /   li.list-inline-item
-  /     h5.mb-1 Register for free
-  /   li.list-inline-item
-  /     a.btn.btn-danger.btn-rounded href="#!"  Sign up!
-  /! Call to action
-  / hr
-  /! Social buttons
-  ul.list-unstyled.list-inline.text-center
-    li.list-inline-item
-      a.btn-floating.btn-fb.mx-1
-        i.fab.fa-facebook-f
-    li.list-inline-item
-      a.btn-floating.btn-tw.mx-1
-        i.fab.fa-twitter
-    li.list-inline-item
-      a.btn-floating.btn-gplus.mx-1
-        i.fab.fa-google-plus-g
-    li.list-inline-item
-      a.btn-floating.btn-li.mx-1
-        i.fab.fa-linkedin-in
-    li.list-inline-item
-      a.btn-floating.btn-dribbble.mx-1
-        i.fab.fa-dribbble
-  /! Social buttons
-  /! Copyright
-  .footer-copyright.text-center.py-3
-    | © 2020 Copyright:
 
 
 css:
   .about{
     line-height: 1.6;
   }
+

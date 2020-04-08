@@ -1,0 +1,11 @@
+.col-12.mt-5.d-flex.justify-content-center
+  .card.shadow-lg.p-3.mb-5.bg-white.rounded
+    - if @facility.image.attached?
+      = image_tag @facility.image, style: 'height:400px'
+    .card-body
+      h3.card-title.text-center.font-weight-bold.mb-5 = @facility.name
+      h5.card-title.text-center.font-weight-bold = @facility.description
+      span
+    .card-body
+      = link_to 'Edit', edit_about_path(@facility),class: 'card-link'
+      = link_to 'Back', facilities_path,class: 'card-link'

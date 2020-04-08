@@ -1,0 +1,47 @@
+header
+  section
+    ul.list-group.list-group-horizontal.w-100.text-light.d-flex.justify-content-end.py-2 style="background: #192f59;"
+      li.list-group.mr-3
+        i.far.fa-envelope.mt-1
+      li.list-group.mr-5
+        | school@gmail.com
+
+      li.list-group.mr-3
+        i.fas.fa-phone-alt.mt-1
+      li.list-group.mr-5
+        | 01-4444444
+
+/ =link_to "logout",destroy_user_session_path, method: :delete
+section
+  nav.navbar.sticky-top.navbar-light.navbar-expand-lg.w-100.pt-0.me_sticky.container-fluid.bg-light
+    =link_to root_path do
+      div style='background: url("#{asset_path("logo.png")}");height:80px;width:100px;background-size:contain'
+    / =image_tag("uniquehydro.jpg")
+    / a.navbar-brand href="#"  Unique Hydro
+    button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarNavDropdown.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item.active.mr-5.fa-lg
+          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59 !important;") href="#{root_path}"
+            | गृह पृष्ठ
+            span.sr-only (current)
+        li.nav-item.dropdown.mr-5.fa-lg
+          a#navbarDropdownMenuLink1.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            | विद्यालय परिचय
+        li.nav-item.mr-5.fa-lg
+          = link_to 'ग्यालरी', displays_path(index: 'gallery'),class: 'nav-link font-weight-bolder primaryText'
+        / a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href=""  ग्यालरी
+        li.nav-item.mr-5.fa-lg
+          = link_to 'सुचना', displays_path(index: 'notice'),class: 'nav-link font-weight-bolder primaryText'
+          / a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#teams"  सुचना
+        li.nav-item.mr-5.fa-lg
+          a#navbarDropdownMenuLink.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            |  विद्यालय परिवार
+            .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+              - TeamCategory.all.each do |category|
+                .dropdown-item
+                  = link_to "#{category.name}", display_path(category, teamCategory_id: category.id), class: 'text-decoration-none btn btn-md rounded bg-white text-dark px-0 py-0'
+        li.nav-item.fa-lg
+          a.nav-link.font-weight-bolder.primaryText style=("color:#192f59;") href="/#contact_us" सम्पर्क
+

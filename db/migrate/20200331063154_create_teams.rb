@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :designation
       t.string :description
-
+      t.references :team_category, null: false, foreign_key: true
       t.timestamps
     end
   end

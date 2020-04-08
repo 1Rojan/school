@@ -1,1 +1,45 @@
-h2 dashboard index
+.row.mt-5.container-fluid
+  .col-sm-5.offset-1.bg-light
+    .card.mb-1.shadow-lg.p-3.mb-5.bg-white.rounded style=("max-width: 540px;")
+      .row.no-gutters
+        .col-md-4.d-flex.align-items-center
+          i.fas.fa-thumbs-up.fa-4x.text-light.bg-success.rounded-circle.p-3
+        .col-md-8
+          .card-body.border-left.border-danger
+            h4.card-title = About
+            p.font-weight-bolder.text-info.card-text = About.all.count.to_s + "  " + "Abouts"
+      btn.btn-sm.btn-primary.ml-auto
+        = link_to "Add Service", new_about_path, class: 'text-light'
+  .col-sm-5.offset-1.bg-light
+    .card.mb-1.shadow-lg.p-3.mb-5.bg-white.rounded style=("max-width: 540px;")
+      .row.no-gutters
+        .col-md-4.d-flex.align-items-center
+          i.fas.fa-sticky-note.fa-4x.text-light.bg-info.rounded-circle.p-3
+        .col-md-8
+          .card-body.border-left.border-danger
+            h4.card-title = Facility
+            p.font-weight-bolder.text-info.card-text = Facility.all.count.to_s + "  " + "Facilities"
+      btn.btn-sm.btn-primary.ml-auto
+        = link_to "Add Project", new_facility_path, class: 'text-light'
+  .col-sm-5.offset-1.bg-light
+    .card.mb-1.shadow-lg.p-3.mb-5.bg-white.rounded style=("max-width: 540px;")
+      .row.no-gutters
+        .col-md-4.d-flex.align-items-center
+          i.fas.fa-user.fa-4x.text-light.bg-secondary.rounded-circle.p-3
+        .col-md-8
+          .card-body.border-left.border-danger
+            h4.card-title = Gallery
+            p.font-weight-bolder.text-info.card-text = Gallery.all.count.to_s + "  " + "Images"
+      btn.btn-sm.btn-primary.ml-auto
+        = link_to "Add Client", new_gallery_path, class: 'text-light'
+  .col-sm-5.offset-1.bg-light
+    .card.mb-1.shadow-lg.p-3.mb-5.bg-white.rounded style=("max-width: 540px;")
+      .row.no-gutters
+        .col-md-4.d-flex.align-items-center
+          i.fas.fa-users.fa-4x.text-light.bg-danger.rounded-circle.p-3
+        .col-md-8
+          .card-body.border-left.border-danger
+            h4.card-title = Notice
+            p.font-weight-bolder.text-info.card-text = Notice.all.count.to_s + "  " + "Notices"
+      btn.btn-sm.btn-primary.ml-auto
+        = link_to "Add Team", new_notice_path, class: 'text-light'

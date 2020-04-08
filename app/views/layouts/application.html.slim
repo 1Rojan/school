@@ -18,8 +18,10 @@ html
     script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    =render 'layouts/navbar'
     - if notice
       p.alert.alert-success= notice
     - if alert
       p.alert.alert-danger= alert
     = yield
+    =render 'layouts/footer'
