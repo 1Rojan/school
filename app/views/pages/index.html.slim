@@ -92,6 +92,8 @@ section.d-none.d-md-block
                     .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
                   .card-footer.bg-transparent.text-justify
                     = infrastructure.description
+                  / |Read More
+                  / i.fas.fa-long-arrow-alt-right.fa-2x
             - Facility.all[1...2].each do |infrastructure|
               .col-4.px-0
                 .card.mb-3.border-0

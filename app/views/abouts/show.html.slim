@@ -4,5 +4,5 @@
       h5.card-title.text-center.font-weight-bold = @about.description
       span
     .card-body
-      = link_to 'Edit', edit_about_path(@about),class: 'card-link'
-      = link_to 'Back', abouts_path,class: 'card-link'
+      = link_to "#{t'edit'}", edit_about_path(@about),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t'back'}", abouts_path,class: 'card-link btn btn btn-secondary'

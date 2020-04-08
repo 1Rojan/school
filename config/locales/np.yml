@@ -29,5 +29,34 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+np:
+
+  login: "लग - इन"
+  email: "ईमेल"
+  password: "पासवर्ड"
+  remember_me: "याद गर्नुहोस्"
+  enter: "प्रबेश गर्नुहोस"
+  sn: "क्र स"
+  dashboard: "ड्यासबोर्ड"
+  about_school: "बिद्यालय परिचय"
+  facility: "पूर्वाधार"
+  gallery: "ग्यालरी"
+  notice: "सूचना"
+  team: "स्कुल परिवार"
+  teamCategory: "समूह प्रकार"
+  add: "थप्नुहोस"
+  signout: "साइन आउट"
+  description: "वर्णन"
+  action: "कार्यहरू"
+  edit: "सम्पादन गर्नुहोस्"
+  show: "देखाउनुहोस्"
+  update: "अपदेट गर्नुहोस "
+  delete: "हटाउनुहोस्"
+  back: "पछाडि जानुहोस्"
+  title: "शीर्षक"
+  image: "फोटो"
+  addImage: "फोटो राख्नुहोस्"
+  name: "नाम"
+  published: "प्रकाशित"
+  designation: "पद"
+  school_municipality: "नगरपालिका स्कूल"

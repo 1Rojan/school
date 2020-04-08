@@ -4,5 +4,5 @@
       h5.card-title.text-center.font-weight-bold = @category.name
       span
     .card-body
-      = link_to 'Edit', edit_team_category_path(@category),class: 'card-link'
-      = link_to 'Back', team_categories_path,class: 'card-link'
+      = link_to "#{t'edit'}", edit_team_category_path(@category),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t'back'}", team_categories_path,class: 'card-link btn btn btn-secondary '

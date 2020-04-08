@@ -1,4 +1,4 @@
-.col-12.mt-5.d-flex.justify-content-center
+.col-10.offset-1.mt-5.d-flex.justify-content-center
   .card.shadow-lg.p-3.mb-5.bg-white.rounded
     - if @team.image.attached?
       = image_tag @team.image, style: 'height:400px'
@@ -9,5 +9,5 @@
       p.text-justify.font-weight-bold = @team.designation
       p.text-justify.font-weight-bold = @team.team_category.name
       p.text-justify.font-weight-bold = @team.description
-      = link_to 'Edit', edit_team_path(@team),class: 'card-link'
-      = link_to 'Back', teams_path,class: 'card-link'
+      = link_to "#{t 'edit'}", edit_team_path(@team),class: 'card-link btn btn-secondary'
+      = link_to "#{t 'back'}", teams_path,class: 'card-link btn btn-secondary'

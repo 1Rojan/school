@@ -5,5 +5,5 @@
       h5.card-title.text-center.font-weight-bold = @notice.description
       span
     .card-body
-      = link_to 'Edit', edit_notice_path(@notice),class: 'card-link'
-      = link_to 'Back', notices_path,class: 'card-link'
+      = link_to "#{t 'edit'}", edit_notice_path(@notice),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t 'back'}", notices_path,class: 'card-link btn btn btn-secondary'
