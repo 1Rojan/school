@@ -1,4 +1,4 @@
-section#index
+section#index.d-none.d-md-block
   #carouselExampleSlidesOnly.carousel.slide data-ride="carousel"
     .carousel-inner
       .carousel-item.active.mt-0
@@ -23,23 +23,60 @@ section#index
                 h2.card-title.fa-3x स्कूल नगरपालिका
                 p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
 
+  /carousel for mobile
+section.d-block.d-md-none
+  #carouselExampleSlidesOnly2.carousel.slide data-ride="carousel"
+    .carousel-inner
+      .carousel-item.active.mt-0
+        div.mx-auto.mt-0.nnav.border style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 80vw; background-size: cover;"
+          .card-img-overlay.d-flex.align-items-center
+            .card.text-white.bg-dark.mb-3.ml-1 style=("max-width: 12rem;max-height: 12rem;opacity:0.8;")
+              .card-body
+                h2.card-title स्कूल नगरपालिका
+                / p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
+      .carousel-item
+        div.mx-auto.mt-0.nnav.border style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 80vw; background-size: cover;"
+          .card-img-overlay.d-flex.align-items-center
+            .card.text-white.bg-dark.mb-3.ml-1 style=("max-width: 12rem;max-height: 12rem;opacity:0.8;")
+              .card-body
+                h2.card-title स्कूल नगरपालिका
+                / p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
+      .carousel-item
+        div.mx-auto.mt-0.nnav.border style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 80vw; background-size: cover;"
+          .card-img-overlay.d-flex.align-items-center
+            .card.text-white.bg-dark.mb-3.ml-1 style=("max-width: 12rem;max-height: 12rem;opacity:0.8;")
+              .card-body
+                h2.card-title स्कूल नगरपालिका
+                / p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
 
-/ About section
-section style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 60vh; background-size: cover;"
+
+
+
+
+/ About section (Desktop)
+section.d-none.d-md-block style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 60vh; background-size: cover;"
   .row.mx-0
     .col-12.px-0 style=("background-color:#192f59 !important; height: 60vh;opacity:0.8;")
       .row.mx-0
         .col-3.px-0.d-flex.align-items-center
           h3.card-title.text-success.font-weight-bold.mx-auto  स्कूलको परिचय
 
-
-
         .col-9.mt-5
           h5.card-text.text-light.text-justify.mt-5.about
             = About.last.description
 
-/ Facility section
-section
+
+/ About section (mobile view)
+section.d-block.d-md-none style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 60vh; background-size: cover;"
+  .row.mx-0
+    .col-12 style=("background-color:#192f59 !important; height: 60vh;opacity:0.8;")
+      h3.card-title.text-success.font-weight-bold.mx-auto.text-center.mt-4  स्कूलको परिचय
+      h5.card-text.text-light.text-justify.mt-5.about
+        = About.last.description
+
+
+/ Facility section (Desktop)
+section.d-none.d-md-block
   h2.text-center.my-5 विद्यालय सुविधा
   .row.mx-0
     #carouselExampleControls1.carousel.slide.d-none.d-md-block data-ride="carousel"
@@ -110,13 +147,26 @@ section
         span.carousel-control-next-icon.bg-dark aria-hidden="true"
         span.sr-only Next
 
+/Facility section (mobile view)
+div.d-block.d-md-none
+  h2.text-center.my-5 विद्यालय सुविधा
+  -Facility.all[0..3].each do |infrastructure|
+    .card.mb-4.border-0
+      .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
+        = infrastructure.name
+      - if infrastructure.image.attached?
+        .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
+      .card-footer.bg-transparent.text-justify
+        = infrastructure.description
+    hr
 
 
+/ Notice section (Desktop)
 section.my-5.bg-light
   h2.text-center.my-5 कार्यक्रम सूचना
   .row.mx-0.my-5
     - Notice.all[0..2].each do |information|
-      .col-4.mb-5
+      .col-md-4.mb-5
         .card.mb-3 style=("max-width: 540px;")
           .row.no-gutters
             / .col-md-3.bg-secondary
@@ -134,19 +184,65 @@ section.my-5.bg-light
                   span
                     = information.published
 
-section.my-5
+/gallery section  (desktop view)
+section.my-5.d-none.d-md-block
   h2.text-center.my-5 ग्यालरी
   .row.mx-0.border
     - Gallery.all.sample(6).each do |photo|
       -if photo.image.attached?
-        .col-4.border style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
-    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
-    / .col-4.border style="background: url(#{asset_path('library.jpg')}) no-repeat; height: 40vh; background-size: cover;"
+        .col-md-4.border style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
 
+/gallery section  (mobile view)
+.col-12.mt-5.mb-4.px-0.d-block.d-md-none
+  h2.text-center.my-5 ग्यालरी
+  #carouselExampleSlidesOnly1.carousel.slide data-ride="carousel"
+    .carousel-inner
+      - if Gallery.first.image.attached?
+        .carousel-item.active.mt-0
+          .carousel-caption.d-none.d-md-block
+          div.mx-auto.mt-0.nnav.border style="background: url(#{url_for(Gallery.first.image)}) no-repeat; height: 50vw; background-size: cover;"
+          .carousel-caption.d-none.d-md-block.d-flex
+            .card.mx-auto style=("opacity:0.7; background-color:#2f2f31;")
+              .card-body.py-0
+                h6.card-text.text-light.font-weight-bold = Gallery.first.description
+      - if Gallery.second
+        - if Gallery.second.image.attached?
+          .carousel-item
+            .carousel-caption.d-none.d-md-block
+            div.mx-auto.mt-0.nnav.border style="background: url(#{url_for(Gallery.second.image)}) no-repeat; height: 50vw; background-size: cover;"
+            .carousel-caption.d-none.d-md-block.d-flex
+              .card.mx-auto style=("opacity:0.7; background-color:#2f2f31;")
+                .card-body.py-0
+                  h6.card-text.text-light.font-weight-bold = Gallery.second.description
+      - if Gallery.third
+        - if Gallery.third.image.attached?
+          .carousel-item
+            .carousel-caption.d-none.d-md-block
+            div.mx-auto.mt-0.nnav.border style="background: url(#{url_for(Gallery.third.image)}) no-repeat; height: 50vw; background-size: cover;"
+            .carousel-caption.d-none.d-md-block.d-flex
+              .card.mx-auto style=("opacity:0.7; background-color:#2f2f31;")
+                .card-body.py-0
+                  h6.card-text.text-light.font-weight-bold = Gallery.third.description
+      - if Gallery.fourth
+        - if Gallery.fourth.image.attached?
+          .carousel-item
+            .carousel-caption.d-none.d-md-block
+            div.mx-auto.mt-0.nnav.border style="background: url(#{url_for(Gallery.fourth.image)}) no-repeat; height: 50vw; background-size: cover;"
+            .carousel-caption.d-none.d-md-block.d-flex
+              .card.mx-auto style=("opacity:0.7; background-color:#2f2f31;")
+                .card-body.py-0
+                  h6.card-text.text-light.font-weight-bold = Gallery.fourth.description
+      - if Gallery.fifth
+        - if Gallery.fifth.image.attached?
+          .carousel-item
+            .carousel-caption.d-none.d-md-block
+            div.mx-auto.mt-0.nnav.border style="background: url(#{url_for(Gallery.fifth.image)}) no-repeat; height: 50vw; background-size: cover;"
+            .carousel-caption.d-none.d-md-block.d-flex
+              .card.mx-auto style=("opacity:0.7; background-color:#2f2f31;")
+                .card-body.py-0
+                  h6.card-text.text-light.font-weight-bold = Gallery.fifth.description
 
+/team section (Desktop view)
 section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
   h1.my-5.text-center.pt-4
     = TeamCategory.first.name
@@ -180,16 +276,32 @@ section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
       span.carousel-control-next-icon.bg-dark aria-hidden="true"
       span.sr-only Next
 
+/team section  (mobile view)
+div.d-block.d-md-none
+  - TeamCategory.first.team.all.each do |team|
+    .card.shadow-lg.bg-white.rounded.mt-3
+      -if team.image.attached?
+        div.img-thumbnail.px-0 style="background: url(#{url_for(team.image)}) no-repeat; height: 200px; background-size: cover;"
+    .card-body.bg-light.border.mt-0
+      h4.card-text.text-primary.text-center = team.name
+      p.card-text.text-secondary.text-justify = team.description
+      span.float-right.ml-auto.mb-5
+        / = link_to "View", display_path(team, team_id: team.id), class: 'text-decoration-none btn btn-md rounded bg-white text-dark border-danger'
+  / span.d-flex.justify-content-center.mt-4
+    = link_to "Show all", display_index_path(index: "teams") , class: 'text-decoration-none btn btn-md rounded bg-light border border-info text-info px-5'
+
+
+
 section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-duration="2s"
   h2.text-center.my-5.pt-4 सम्पर्क
   .row
-    .col-md-6
+    .col-md-6.mb-5
       div style="width = 300px;"
       div.d-none.d-md-block
         iframe src="https://wego.here.com/directions/mix//Unique-Hydro-and-Electric-Pvt.-Ltd.,-Rudramati-Marg,-32,-Kathmandu:e-eyJuYW1lIjoiVW5pcXVlIEh5ZHJvIGFuZCBFbGVjdHJpYyBQdnQuIEx0ZC4iLCJhZGRyZXNzIjoiVGVlbmt1bmUsIE5lYXIgUGVudGFnb24gQ29sbGFnZSwgS2F0aG1hbmR1LCBOZXBhbCIsImxhdGl0dWRlIjoyNy43LCJsb25naXR1ZGUiOjg1LjMzMzMsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MzIwOTU5MTA0NzczNTI3fQ==?map=27.69785,85.32742,15,normal&fb_locale=en_US" width="600" height="450" style="border:0;" allowfullscreen=""
-      div.d-block.d-md-none
-        iframe src="https://wego.here.com/directions/mix//Unique-Hydro-and-Electric-Pvt.-Ltd.,-Rudramati-Marg,-32,-Kathmandu:e-eyJuYW1lIjoiVW5pcXVlIEh5ZHJvIGFuZCBFbGVjdHJpYyBQdnQuIEx0ZC4iLCJhZGRyZXNzIjoiVGVlbmt1bmUsIE5lYXIgUGVudGFnb24gQ29sbGFnZSwgS2F0aG1hbmR1LCBOZXBhbCIsImxhdGl0dWRlIjoyNy43LCJsb25naXR1ZGUiOjg1LjMzMzMsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MzIwOTU5MTA0NzczNTI3fQ==?map=27.69785,85.32742,15,normal&fb_locale=en_US" width="330px" height="330px " style="border:0;" allowfullscreen=""
-    .col-md-6
+      div.d-block.d-md-none.w-100
+        iframe.w-100 src="https://wego.here.com/directions/mix//Unique-Hydro-and-Electric-Pvt.-Ltd.,-Rudramati-Marg,-32,-Kathmandu:e-eyJuYW1lIjoiVW5pcXVlIEh5ZHJvIGFuZCBFbGVjdHJpYyBQdnQuIEx0ZC4iLCJhZGRyZXNzIjoiVGVlbmt1bmUsIE5lYXIgUGVudGFnb24gQ29sbGFnZSwgS2F0aG1hbmR1LCBOZXBhbCIsImxhdGl0dWRlIjoyNy43LCJsb25naXR1ZGUiOjg1LjMzMzMsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MzIwOTU5MTA0NzczNTI3fQ==?map=27.69785,85.32742,15,normal&fb_locale=en_US"  height="350px " style="border:0;" allowfullscreen=""
+    .col-md-6.mb-5
       form
         .form-group
           label for="exampleInputEmail1"  तपाइँको नाम
