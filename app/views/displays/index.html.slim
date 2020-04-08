@@ -14,7 +14,7 @@ section#index
     .row.mx-0.border
       - @gallery.all.each do |photo|
         -if photo.image.attached?
-          .col-4.border style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
+          .col-md-4.border.mx-auto.mt-3 style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
 
 -if @notices.nil? == false
   section.mb-5

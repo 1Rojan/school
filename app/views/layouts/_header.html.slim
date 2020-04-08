@@ -2,7 +2,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.mt-0
   button.navbar-toggler aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarTogglerDemo01" data-toggle="collapse" type="button"
     span.navbar-toggler-icon
   #navbarTogglerDemo01.collapse.navbar-collapse
-    = link_to "School Municipality", dashboards_path, class: 'font-weight-bolder'
+    = link_to "#{t 'school_municipality'}", dashboards_path, class: 'font-weight-bolder'
     ul.navbar-nav.mr-auto.mt-2.mt-lg-0
     / li.nav-item.active
     /   a.nav-link.text-light href="#"
@@ -22,4 +22,4 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.mt-0
                     class: 'dropdown-item col-6 border-left fa-sm',
                     style: "cursor:pointer"
               i.fas.fa-sign-out-alt.mr-2
-              span Sign out
+              span = t'signout'

@@ -30,12 +30,12 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field.mb-0.border.shadow-lg.px-5.pb-4.pt-3.rounded
         / =f.text_field :name,class:'my-1 w-75 bg-dark text-white p-1 rounded border-warning',placeholder:'Name'
-        h2.pb-2.text-center.font-weight-bold.text-secondary Login
-        =f.label :email, class:'mb-0 font-weight-bold'
+        h2.pb-2.text-center.font-weight-bold.text-secondary =t'login'
+        =f.label :email, "#{t 'email'}" , class:'mb-0 font-weight-bold'
         =f.text_field :email,class:'mb-4 mt-1 text-dark mb-2 rounded form-control',placeholder:'Please Enter Email'
-        =f.label :password, class:'mb-0 font-weight-bold'
+        =f.label :password, "#{t 'password'}", class:'mb-0 font-weight-bold'
         =f.password_field :password,class:'mb-4 mt-1 text-dark mb-2 rounded form-control',placeholder:'Please Enter Password'
         .field
           = f.check_box :remember_me
-          = f.label :remember_me, class: 'font-weight-bold ml-3'
-          = f.button :submit, class: ' w-25 btn-outline-danger float-right font-weight-bold'
+          = f.label :remember_me, "#{t'remember_me'}", class: 'font-weight-bold ml-3'
+          button.w-25.btn-outline-danger.float-right.font-weight-bold type="submit" =t 'enter'

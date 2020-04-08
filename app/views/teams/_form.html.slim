@@ -12,18 +12,18 @@
           table
             tr
               td.p-3
-                = f.label :name
+                = f.label :name, "#{t'name'}"
               td.p-3
                 = f.text_field :name, class: 'form-control'
             tr
               td.p-3
-                = f.label :designation
+                = f.label :designation, "#{t 'designation'}"
               td.p-3
                 = f.text_field :name, class: 'form-control'
 
             tr
               td.p-3
-                = f.label :description
+                = f.label :description, "#{t'description'}"
               td.p-3
                 = f.text_area :description, size: "80x10", class: 'form-control'
 
@@ -39,19 +39,20 @@
           table
             tr
               td
-                = f.label :team_category_id
+                = f.label :team_category_id, "#{t'teamCategory'}"
               td
                 = f.select :team_category_id, TeamCategory.all.map {|k| [k.name.titleize, k.id]}, class: 'form-control'
             tr
               td
                 = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp'
-                button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn.mt-5 Upload Images
+                button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn.mt-5 =t"addImage"
                 br
                 img.img-thumbnail#showImg alt=" " src="#" style="height:150px;"
                 - if @team.nil? == false
                   - if @team.image.attached?
                     = image_tag @team.image, style: 'height:160px;', class: 'prevImg mt-3'
-      .actions.mt-5.float-right = f.submit
+      .actions.mt-5.float-right
+        button type="submit" =t'add'
 
 
 

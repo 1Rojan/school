@@ -12,12 +12,12 @@
           table
             tr
               td.p-3
-                = f.label :title
+                = f.label :title, "#{t 'title'}"
               td.p-3
                 = f.text_field :title, class: 'form-control'
             tr
               td.p-3
-                = f.label :published, 'Date'
+                = f.label :published, "#{t 'published'}"
                 td.p-3
                   = f.date_field :published, class: 'form-control'
 
@@ -33,7 +33,7 @@
           table
             tr
               td
-                = f.label :description
+                = f.label :description, "#{t 'description'}"
             tr
               td
                 = f.text_area :description, size: "80x10", class: 'form-control'
@@ -45,7 +45,8 @@
               - if @notice.nil? == false
                 - if @notice.image.attached?
                   = image_tag @notice.image, style: 'height:160px;', class: 'prevImg mt-3'
-      .actions.mt-5.float-right = f.submit
+      .actions.mt-5.float-right
+        button type="submit" = t 'add'
 
 
 

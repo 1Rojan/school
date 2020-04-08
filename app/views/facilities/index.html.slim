@@ -1,33 +1,34 @@
-h1.text-center.my-4 Facility
-= link_to new_facility_path
-  btn.btn-sm.btn-primary.text-light
-    | Add Facility
-    i.fas.fa-plus-circle.ml-2
-table.table.table-.w-100.table-hover
-  thead
-    tr
-      th S.n
-      th Title
-      th Description
-      th Image
-      th Action
-      th
-
-  tbody
-    - @facilities.each.with_index(1) do |facility, index|
+.col-12.mx-4
+  h1.text-center.my-4 = t'facility'
+  = link_to new_facility_path
+    btn.btn.btn-primary.text-light
+      = t'add'
+      i.fas.fa-plus-circle.ml-2
+  table.table.table-.w-100.table-hover
+    thead
       tr
-        td = index
-        td = facility.name
-        td.text-justify = facility.description
-        - if facility.image.attached?
+        th = t'sn'
+        th = t'name'
+        th = t'description'
+        th.px-5 = t'image'
+        th = t'action'
+        th
+
+    tbody
+      - @facilities.each.with_index(1) do |facility, index|
+        tr
+          td = index
+          td = facility.name
+          td.text-justify = facility.description
+          - if facility.image.attached?
+            td
+              div style="height=100px"
+                = image_tag (facility.image), class: 'img-thumbnail', style: "height:50px"
+          td.pr-0
+            = link_to facility
+              i.fas.fa-eye.text-info.mr-1
+            = link_to edit_facility_path(facility)
+              i.fas.fa-pencil-alt.text-info.ml-1
+            = link_to facility, data: {confirm: 'Are you sure?'}, method: :delete
+              i.fas.fa-trash.text-danger.ml-1
           td
-            div style="height=100px"
-              = image_tag (facility.image), class: 'img-thumbnail', style: "height:50px"
-        td.pr-0
-          = link_to facility
-            i.fas.fa-eye.text-info.mr-1
-          = link_to edit_facility_path(facility)
-            i.fas.fa-pencil-alt.text-info.ml-1
-          = link_to facility, data: {confirm: 'Are you sure?'}, method: :delete
-            i.fas.fa-trash.text-danger.ml-1
-        td

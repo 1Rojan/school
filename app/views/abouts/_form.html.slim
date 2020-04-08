@@ -12,15 +12,16 @@
           table
             tr
               td
-                = f.label :title
+                = f.label :title, "#{t 'title'}"
             tr
               td
                 = f.text_field :title, class:'form-control mb-3'
             tr
               td
-                = f.label :description
+                = f.label :description, "#{t 'description'}"
             tr
               td
                 = f.text_area :description, size: "80x10", class: 'form-control'
 
-      .actions= f.submit
+      .actions
+        button type="submit" = t'update'

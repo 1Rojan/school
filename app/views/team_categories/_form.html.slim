@@ -12,12 +12,13 @@
           table
             tr
               td.p-3
-                = f.label :name
+                = f.label :name, "#{t'name'}"
               td.p-3
                 = f.text_field :name, class: 'form-control'
 
 
-      .actions.mt-5.float-right = f.submit
+      .actions.mt-5.float-right
+        button type="submit" =t'add'
 
 
 
