@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: school_municipality_production
-  username: school_municipality
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['SCHOOL_MUNICIPALITY_DATABASE_PASSWORD'] %>
