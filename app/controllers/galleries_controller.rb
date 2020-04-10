@@ -1,5 +1,7 @@
 class GalleriesController < DashboardsController
   before_action :set_params, only: [:show, :edit, :update, :destroy]
+
+
   def index
     @galleries = Gallery.all
   end
@@ -10,7 +12,7 @@ class GalleriesController < DashboardsController
 
   def create
     Gallery.transaction do
-    @gallery = Gallery.create(gallery_params)
+    @gallery = Gallery.create!(gallery_params)
     if @gallery.persisted?
       redirect_to galleries_path, notice: 'Gallery was created'
     end
@@ -40,4 +42,6 @@ class GalleriesController < DashboardsController
     def gallery_params
       params.require(:gallery).permit(:description, :image)
     end
+
+
 end

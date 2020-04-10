@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_083856) do
+ActiveRecord::Schema.define(version: 2020_04_10_042232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_03_31_083856) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "intro_id"
+    t.index ["intro_id"], name: "index_abouts_on_intro_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -52,6 +54,12 @@ ActiveRecord::Schema.define(version: 2020_03_31_083856) do
 
   create_table "galleries", force: :cascade do |t|
     t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "intros", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -93,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_083856) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "abouts", "intros"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "teams", "team_categories"
 end

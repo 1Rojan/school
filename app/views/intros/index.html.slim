@@ -1,0 +1,28 @@
+
+.col-12.mx-4
+  h1.text-center.my-4 =t 'introCategory'
+  = link_to new_intro_path
+    btn.btn.btn-primary.text-light
+      =t 'add'
+      i.fas.fa-plus-circle.ml-2
+  table.table.table-.w-100.table-hover
+    thead
+      tr
+        th =t 'sn'
+        th =t 'name'
+        th = t'action'
+        th
+
+    tbody
+      - @intros.each.with_index(1) do |category, index|
+        tr
+          td = index
+          td = category.name
+          td.pr-0
+            = link_to category
+              i.fas.fa-eye.text-info.mr-1
+            = link_to edit_intro_path(category)
+              i.fas.fa-pencil-alt.text-info.ml-1
+            = link_to category, data: {confirm: 'Are you sure?'}, method: :delete
+              i.fas.fa-trash.text-danger.ml-1
+          td

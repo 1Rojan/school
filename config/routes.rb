@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :intros
   devise_for :users
   resources :notices
   resources :teams

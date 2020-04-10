@@ -9,7 +9,7 @@ section#index
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 50vh ; background-size: cover;"
 
 -if @gallery.nil? == false
-  section.mb-5
+  section.mb-5.wow.zoomIn data-wow-duration="2s"
     h2.text-center.mb-5.bg-dark.text-light.py-2 ग्यालरी
     .row.mx-0.border
       - @gallery.all.each do |photo|
@@ -17,29 +17,47 @@ section#index
           .col-md-4.border.mx-auto.mt-3 style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
 
 -if @notices.nil? == false
-  section.mb-5
+  section.mb-5.wow.zoomIn data-wow-duration="2s"
     h2.text-center.mb-5.bg-dark.text-light.py-2 कार्यक्रम सूचना
-  .row.mx-0.my-5
-    - @notices.all.each do |information|
-      .col-md-4.mb-5
-        .card.mb-3 style=("max-width: 540px;")
-          .row.no-gutters
-            / .col-md-3.bg-secondary
-            /   h4.mt-5.text-light.text-center
-            /     = information.published
-            .col-md-12
-              .card-body.pr-1.pl-2
-                h6.card-title.font-weight-bold.text-primary.border-bottom
-                  = information.title
-                p.card-text
-                  = information.description
-                p.card-text
-                  small.text-muted
-                    |Published : &nbsp;
-                  span
-                    = information.published
+    .row.mx-0.my-5
+      - @notices.all.each do |information|
+        .col-md-4.mb-5 data-target="#example#{information.id}" data-toggle="modal" type="button"
+          .card.mb-3 style=("max-width: 540px;")
+            .row.no-gutters
+              / .col-md-3.bg-secondary
+              /   h4.mt-5.text-light.text-center
+              /     = information.published
+              .col-md-12
+                .card-body.pr-1.pl-2
+                  h6.card-title.font-weight-bold.text-primary.border-bottom
+                    = information.title
+                  p.card-text
+                    = information.description
+                  p.card-text
+                    small.text-muted
+                      |Published : &nbsp;
+                    span
+                      = information.published
 
-
+/! Modal
+-if @notices.nil? ==false
+  - @notices.all.each do |information|
+    .modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" id="example#{information.id}"
+      .modal-dialog.modal-dialog-centered role="document"
+        .modal-content
+          .modal-header
+            h5#exampleModalLongTitle.modal-title.text-primary = information.title
+            button.close aria-label="Close" data-dismiss="modal" type="button"
+              span aria-hidden="true"  &times;
+          .modal-body
+            = information.description
+          p.mb-0.ml-3.mt-4
+            small.text-muted
+              |Published : &nbsp;
+            span
+              = information.published
+          .modal-footer
+            button.btn.btn-secondary data-dismiss="modal" type="button"  Close
 
 / section.container-fluid.mt-5.bg-light.px-0
 /   .row.mt-5.mr-0

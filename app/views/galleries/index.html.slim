@@ -14,19 +14,20 @@
         th
 
     tbody
-      - @galleries.each.with_index(1) do |gallery, index|
-        tr
-          td = index
-          td.text-justify = gallery.description
-          - if gallery.image.attached?
+      -if @galleries.nil? == false
+        - @galleries.each.with_index(1) do |gallery, index|
+          tr
+            td = index
+            td.text-justify = gallery.description
+            - if gallery.image.attached?
+              td
+                div style="height=100px"
+                  = image_tag (gallery.image), class: 'img-thumbnail', style: "height:50px"
+            td.pr-0
+              = link_to gallery
+                i.fas.fa-eye.text-info.mr-1
+              = link_to edit_gallery_path(gallery)
+                i.fas.fa-pencil-alt.text-info.ml-1
+              = link_to gallery, data: {confirm: 'Are you sure?'}, method: :delete
+                i.fas.fa-trash.text-danger.ml-1
             td
-              div style="height=100px"
-                = image_tag (gallery.image), class: 'img-thumbnail', style: "height:50px"
-          td.pr-0
-            = link_to gallery
-              i.fas.fa-eye.text-info.mr-1
-            = link_to edit_gallery_path(gallery)
-              i.fas.fa-pencil-alt.text-info.ml-1
-            = link_to gallery, data: {confirm: 'Are you sure?'}, method: :delete
-              i.fas.fa-trash.text-danger.ml-1
-          td

@@ -7,7 +7,7 @@ section#index
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 50vh; background-size: cover;"
       .carousel-item
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 50vh ; background-size: cover;"
-section
+section.wow.zoomIn data-wow-duration="2s"
   -if @team.nil? == false
     h2.text-center.bg-dark.text-light.py-2.px-0
       =@category
@@ -22,23 +22,29 @@ section
               h4.card-text.text-danger.text-center = member.name
               p.card-text.text-dark.text-justify.text-center = member.designation
 
-  / -if @team.nil? == false
+  -if @intro.nil? == false
     h2.text-center.bg-dark.text-light.py-2.px-0
-      | Team
+      =@intro.name
     .row.container-fluid.mt-5
-      .col-md-4
-        / =image_tag(@team.image)
-        div.mx-auto.mt-0 style="background: url(#{url_for(@team.image)}) no-repeat;height:400px"
-      .col-md-6.container-fluid
-        h3.font-weight-bold.mb-0.d-none.d-md-block
-        h3.text-center.font-weight-bold.mb-0.d-block.d-md-none
-          =@team.name
-        strong.text-secondary.d-none.d-md-block
-        strong.text-center.text-secondary.d-block.d-md-none
-          =@team.position
-        p.text-justify.mt-4
-          =@team.achievement
-    -if @project.nil? == false
+      .col-4
+        div.img-thumbnail style="background: url(#{asset_path("principal1.jpg")}) no-repeat; height: 400px; background-size: cover;"
+        / = image_tag("principal1.jpg")
+      .col-8
+        =@intro.abouts.all[0...1].each do |intr|
+          = intr.description
+        / .col-md-4
+        /   / =image_tag(@team.image)
+        /   div.mx-auto.mt-0 style="background: url(#{url_for(@team.image)}) no-repeat;height:400px"
+        / .col-md-6.container-fluid
+        /   h3.font-weight-bold.mb-0.d-none.d-md-block
+        /   h3.text-center.font-weight-bold.mb-0.d-block.d-md-none
+        /     =@team.name
+        /   strong.text-secondary.d-none.d-md-block
+        /   strong.text-center.text-secondary.d-block.d-md-none
+        /     =@team.position
+        /   p.text-justify.mt-4
+        /     =@team.achievement
+    / -if @project.nil? == false
       -@project.image
       h2.text-center
         =@project.name
