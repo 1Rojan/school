@@ -255,7 +255,7 @@ section.container-fluid.mt-5.wow.zoomIn data-wow-duration="2s"
           - TeamCategory.first.team[0..2].each do |member|
             .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
               -if member.image.attached?
-                div.img-thumbnail style="background: url(#{url_for(member.image)}) no-repeat; height: 200px; background-size: cover;"
+                div.img-thumbnail style="background: url(#{url_for(member.image)}) no-repeat; height: 250px; background-size: cover;"
               / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
               .card-body.bg-light.border
                 h4.card-text.text-danger.text-center  =member.name
@@ -266,7 +266,7 @@ section.container-fluid.mt-5.wow.zoomIn data-wow-duration="2s"
             -member.each do |mem|
               .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
                 - if mem.image.attached?
-                  div.img-thumbnail style="background: url(#{url_for(mem.image)}) no-repeat; height: 200px; background-size: cover;"
+                  div.img-thumbnail style="background: url(#{url_for(mem.image)}) no-repeat; height: 250px; background-size: cover;"
                 / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
                 .card-body.bg-light.border
                   h4.card-text.text-danger.text-center = mem.name
