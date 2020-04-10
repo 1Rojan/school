@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
 
-  layouts 'dashboard'
+  layout 'dashboard'
 
   before_action :authenticate_user!
 

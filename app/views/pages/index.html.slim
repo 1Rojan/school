@@ -4,7 +4,7 @@ section#index.d-none.d-md-block
       .carousel-item.active.mt-0
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 90vh; background-size: cover;"
           .card-img-overlay.d-flex.align-items-center
-            .card.text-white.bg-dark.mb-3.ml-5 style=("max-width: 30rem;opacity:0.8;")
+            .card.text-white.bg-dark.mb-3.ml-5.wow.flipInY data-wow-duration="4s" style=("max-width: 30rem;opacity:0.8;")
               .card-body.py-5
                 h1.card-title.fa-3x स्कूल नगरपालिका
                 p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
@@ -59,10 +59,10 @@ section.d-none.d-md-block style="background: url(#{asset_path('indeximage1.jpg')
     .col-12.px-0 style=("background-color:#192f59 !important; height: 60vh;opacity:0.8;")
       .row.mx-0
         .col-3.px-0.d-flex.align-items-center
-          h3.card-title.text-success.font-weight-bold.mx-auto  स्कूलको परिचय
+          h3.card-title.text-success.font-weight-bold.mx-auto.wow.fadeInLeft data-wow-duration="2s"  स्कूलको परिचय
 
         .col-9.mt-5
-          h5.card-text.text-light.text-justify.mt-5.about
+          h5.card-text.text-light.text-justify.mt-5.about.wow.fadeInRight data-wow-duration="2s"
             = About.last.description
 
 
@@ -76,7 +76,7 @@ section.d-block.d-md-none style="background: url(#{asset_path('indeximage1.jpg')
 
 
 / Facility section (Desktop)
-section.d-none.d-md-block
+section.d-none.d-md-block.wow.fadeInUp data-wow-duration="2s"
   h2.text-center.my-5 विद्यालय सुविधा
   .row.mx-0
     #carouselExampleControls1.carousel.slide.d-none.d-md-block data-ride="carousel"
@@ -164,8 +164,8 @@ div.d-block.d-md-none
 
 
 / Notice section (Desktop)
-section.my-5.bg-light
-  h2.text-center.my-5 कार्यक्रम सूचना
+section.my-5.bg-light.wow.zoomIn data-wow-duration="2s"
+  h1.text-center.my-5 कार्यक्रम सूचना
   .row.mx-0.my-5
     - Notice.all[0..2].each do |information|
       .col-md-4.mb-5
@@ -187,8 +187,8 @@ section.my-5.bg-light
                     = information.published
 
 /gallery section  (desktop view)
-section.my-5.d-none.d-md-block
-  h2.text-center.my-5 ग्यालरी
+section.my-5.d-none.d-md-block.wow.zoomIn data-wow-duration="2s"
+  h1.text-center.my-5 ग्यालरी
   .row.mx-0.border
     - Gallery.all.sample(6).each do |photo|
       -if photo.image.attached?
@@ -245,8 +245,8 @@ section.my-5.d-none.d-md-block
                   h6.card-text.text-light.font-weight-bold = Gallery.fifth.description
 
 /team section (Desktop view)
-section.container-fluid.mt-5.wow.bounceInUp data-wow-duration="2s"
-  h1.my-5.text-center.pt-4
+section.container-fluid.mt-5.wow.zoomIn data-wow-duration="2s"
+  h1.my-5.text-center.pt-4font-weight-bold
     = TeamCategory.first.name
   #carouselExampleControls.carousel.slide.d-none.d-md-block data-ride="carousel"
     .carousel-inner

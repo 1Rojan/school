@@ -4,8 +4,8 @@ class DisplaysController < ApplicationController
     if params.include?'teamCategory_id'
       @team = TeamCategory.find(params[:teamCategory_id]).team.all
       @category = TeamCategory.find(params[:teamCategory_id]).name
-    # elsif params.include?'project_id'
-    #   @project = Project.find(params[:project_id])
+    elsif params.include?'introCategory_id'
+      @intro = Intro.find(params[:introCategory_id])
     # elsif params.include?'client_id'
     #   @client = Client.find(params[:client_id])
     # elsif params.include?'clients'

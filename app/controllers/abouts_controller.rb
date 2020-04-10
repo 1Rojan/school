@@ -40,6 +40,6 @@ class AboutsController < DashboardsController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def about_params
-    params.require(:about).permit(:description)
+    params.require(:about).permit(:description, :intro_id)
   end
 end

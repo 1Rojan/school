@@ -8,6 +8,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" /
     link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet"
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
     link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet"
     link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet"
     script crossorigin="anonymous" src="https://kit.fontawesome.com/d3656c6b80.js"
@@ -16,6 +17,8 @@ html
     script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     script src="https://code.jquery.com/jquery-1.12.4.js"
     script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     =render 'layouts/navbar'
@@ -25,3 +28,15 @@ html
       p.alert.alert-danger= alert
     = yield
     =render 'layouts/footer'
+
+javascript:
+
+    new WOW().init();
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            var success = document.querySelector('.alert');
+            console.log(success);
+            success.innerHTML = "";
+            success.classList.remove('alert');
+        }, 3000);
+    });
