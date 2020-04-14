@@ -30,12 +30,12 @@ html
         = yield
 
 
-      javascript:
-          document.addEventListener('DOMContentLoaded', function () {
-              setTimeout(function () {
-                  var success = document.querySelector('.alert');
-                  console.log(success);
-                  success.innerHTML = "";
-                  success.classList.remove('alert');
-              }, 3000);
-          });
+javascript:
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            var success = document.querySelector('.alert');
+            console.log(success);
+            success.innerHTML = "";
+            success.classList.remove('alert');
+        }, 3000);
+    });
