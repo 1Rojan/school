@@ -18,14 +18,14 @@
                 = f.text_field :title, class:'form-control mb-3'
             tr
               td
-                = f.label :description
                 = f.label :intro_id, "#{t 'introCategory'}"
             tr
               td
-                = f.select :intro_id, Intro.all.map{|intr| intr.name, intr.id}, class:'form-control mb-3'
+                / = f.select :intro_id, Intro.all.map{|intr| intr.name, intr.id}, class:'form-control mb-3'
+                = f.select :intro_id, Intro.all.map {|k| [k.name, k]}, {}, class: 'form-control'
             tr
               td
-                = f.label :description, "#{t 'description'}", class:'mt-4'
+                = f.label :description, "#{t ('description')}", class:'mt-4'
             tr
               td
                 = f.text_area :description, size: "80x10", class: 'form-control'
