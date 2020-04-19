@@ -1,0 +1,60 @@
+.col-12.mx-4
+  h1.text-center.my-4 = t'admission'
+  / = link_to new_admission_path
+    btn.btn.btn-primary.text-light
+      = t'add'
+      i.fas.fa-plus-circle.ml-2
+  table.table.w-100.table-hover
+    thead
+      tr
+        th = t'sn'
+        th = t'name'
+        th = t'dob'
+        th = t'gender'
+        th = t'address'
+        th = t'phone'
+        th = t'email'
+        th = t'fatherName'
+        th = t'motherName'
+        th = t'fatherPhone'
+        th = t'motherPhone'
+        th = t'admissionFor'
+        th = t'markSheet'
+        th = t'action'
+        th
+
+    tbody
+      - @admissions.each.with_index(1) do |admission, index|
+        tr
+          td = index
+          td = admission.name
+          td = admission.dob
+          td = admission.gender
+          td = admission.address
+          td = admission.phone
+          td = admission.email
+          td = admission.father_name
+          td = admission.mother_name
+          td = admission.father_phone
+          td = admission.mother_phone
+          td = admission.admission_for
+          td = admission.mark_sheet
+          / td
+            - if admission.image.attached?
+              div style="height=100px"
+                = image_tag (admission.image), class: 'img-thumbnail', style: "height:50px"
+          td.pr-0
+            = link_to admission
+              i.fas.fa-eye.text-info.mr-1
+            = link_to edit_admission_path(admission)
+              i.fas.fa-pencil-alt.text-info.ml-1
+            = link_to admission, data: {confirm: 'Are you sure?'}, method: :delete
+              i.fas.fa-trash.text-danger.ml-1
+          td
+
+css:
+
+  table{
+    table-layout: fixed;
+    width: 100%:
+  }

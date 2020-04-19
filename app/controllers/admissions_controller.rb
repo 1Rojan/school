@@ -1,0 +1,74 @@
+class AdmissionsController < DashboardsController
+  before_action :set_admission, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: 'create'
+  layout "application", only: [:create]
+  # GET /admissions
+  # GET /admissions.json
+  def index
+    @admissions = Admission.all
+  end
+
+  # GET /admissions/1
+  # GET /admissions/1.json
+  def show
+  end
+
+  # GET /admissions/new
+  def new
+    @admission = Admission.new
+  end
+
+  # GET /admissions/1/edit
+  def edit
+  end
+
+  # POST /admissions
+  # POST /admissions.json
+  def create
+    @admission = Admission.new(admission_params)
+    respond_to do |format|
+      if @admission.save
+        format.html { redirect_to root_path, notice: 'Admission was successfully created.' }
+        format.json { render :show, status: :created, location: @admission }
+      else
+        format.html { render new_display_path }
+        format.json { render json: @admission.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /admissions/1
+  # PATCH/PUT /admissions/1.json
+  def update
+    respond_to do |format|
+      if @admission.update(admission_params)
+        format.html { redirect_to @admission, notice: 'Admission was successfully updated.' }
+        format.json { render :show, status: :ok, location: @admission }
+      else
+        format.html { render :edit }
+        format.json { render json: @admission.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /admissions/1
+  # DELETE /admissions/1.json
+  def destroy
+    @admission.destroy
+    respond_to do |format|
+      format.html { redirect_to admissions_url, notice: 'Admission was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_admission
+      @admission = Admission.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def admission_params
+      params.require(:admission).permit(:name, :dob, :gender, :address, :phone, :email, :father_name, :mother_name, :father_phone, :mother_phone, :admission_for, :mark_sheet)
+    end
+end

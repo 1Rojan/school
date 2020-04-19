@@ -1,0 +1,45 @@
+= form_for @admission do |f|
+  - if @admission.errors.any?
+    #error_explanation
+      / h2 = "#{pluralize(@admission.errors.count, "error")} prohibited this admission from being saved:"
+      ul
+        - @admission.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :dob
+    = f.date_field :dob
+  .field
+    = f.label :gender
+    = f.text_field :gender
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :father_name
+    = f.text_field :father_name
+  .field
+    = f.label :mother_name
+    = f.text_field :mother_name
+  .field
+    = f.label :father_phone
+    = f.text_field :father_phone
+  .field
+    = f.label :mother_phone
+    = f.text_field :mother_phone
+  .field
+    = f.label :admission_for
+    = f.number_field :admission_for
+  .field
+    = f.label :mark_sheet
+    = f.text_field :mark_sheet
+  .actions = f.submit

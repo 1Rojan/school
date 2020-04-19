@@ -1,0 +1,42 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @admission.name
+p
+  strong Dob:
+  = @admission.dob
+p
+  strong Gender:
+  = @admission.gender
+p
+  strong Address:
+  = @admission.address
+p
+  strong Phone:
+  = @admission.phone
+p
+  strong Email:
+  = @admission.email
+p
+  strong Father name:
+  = @admission.father_name
+p
+  strong Mother name:
+  = @admission.mother_name
+p
+  strong Father phone:
+  = @admission.father_phone
+p
+  strong Mother phone:
+  = @admission.mother_phone
+p
+  strong Admission for:
+  = @admission.admission_for
+p
+  strong Mark sheet:
+  = @admission.mark_sheet
+
+=> link_to 'Edit', edit_admission_path(@admission)
+'|
+=< link_to 'Back', admissions_path

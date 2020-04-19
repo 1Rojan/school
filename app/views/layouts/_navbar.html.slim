@@ -24,19 +24,22 @@ nav.navbar.sticky-top.navbar-light.navbar-expand-lg.w-100.pt-0.container-fluid.b
 
       li.nav-item.dropdown.mr-5
         a#navbarDropdownMenuLink0.nav-link.font-weight-bolder.primaryText aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"  परिचय
-        .dropdown-menu.float-left aria-labelledby="navbarDropdownMenuLink0"
+        .dropdown-menu.float-left.py-0 aria-labelledby="navbarDropdownMenuLink0"
           - Intro.all.each do |intros|
-            .dropdown-item
-              = link_to "#{intros.name}", display_path(intros, introCategory_id: intros.id), class: 'text-decoration-none bg-white text-dark px-0 py-0'
+            .dropdown-item.bg-light
+              = link_to "#{intros.name}", display_path(intros, introCategory_id: intros.id), class: 'text-decoration-none text-dark'
       li.nav-item.dropdown.mr-5
         a#navbarDropdownMenuLink.nav-link.font-weight-bolder.primaryText.my-0 aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
           |  विद्यालय परिवार
-        .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+        .dropdown-menu.py-0 aria-labelledby="navbarDropdownMenuLink"
           - TeamCategory.all.each do |team|
-            .dropdown-item
-              = link_to "#{team.name}", display_path(team, teamCategory_id: team.id), class: 'text-decoration-none  bg-white text-dark px-0 py-0'
+            .dropdown-item.bg-light
+              = link_to "#{team.name}", display_path(team, teamCategory_id: team.id), class: 'text-decoration-none text-dark'
       li.nav-item.mr-5
         a.nav-link.font-weight-bolder.primaryText style=("color:#385577;") href="#{displays_path(index: 'gallery')}"  ग्यालरी
+
+      li.nav-item.mr-5
+        a.nav-link.font-weight-bolder.primaryText style=("color:#385577;") href="#{new_display_path(new: 'admission')}"  स्कुल भर्ना
 
       li.nav-item.mr-5
         a.nav-link.font-weight-bolder.primaryText style=("color:#385577;") href="#{displays_path(index: 'notice')}"  सुचना
