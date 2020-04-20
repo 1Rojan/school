@@ -31,6 +31,37 @@
 
 np:
 
+  activerecord:
+    errors:
+      models:
+        admission:
+          attributes:
+            name:
+              blank: "कृपया नाम भर्नुहोस"
+            email:
+              blank: "कृपया ईमेल भर्नुहोस"
+              taken: "ईमेल पहिल्यै लिइएको छ"
+            address:
+              blank: "कृपया ठेगाना भर्नुहोस"
+            admission:
+              blank: "कृपया ्कुल भर्ना भर्नुहोस"
+            dob:
+              blank: "कृपया जन्म मिती भर्नुहोस"
+            gender:
+              blank: "कृपया लिंग भर्नुहोस"
+            phone:
+              blank: "कृपया फोन नं भर्नुहोस"
+            father_phone:
+              blank: "कृपया बुवाको फोन नं भर्नुहोस"
+            father_name:
+              blank: "कृपया बुवाको नाम भर्नुहोस"
+            mother_name:
+              blank: "कृपया आमाको नाम भर्नुहोस"
+            mother_phone:
+              blank: "कृपया आमाको फोन नं भर्नुहोस"
+
+
+
   login: "लग - इन"
   email: "ईमेल"
   password: "पासवर्ड"
@@ -61,3 +92,17 @@ np:
   designation: "पद"
   school_municipality: "नगरपालिका स्कूल"
   introCategory: "बिद्यालय परिचय प्रकार"
+
+
+  admission: "स्कुल भर्ना"
+  dob: "जन्म मिती"
+  gender: "लिंग"
+  address: "ठेगाना"
+  phone: "फोन नं"
+  fatherPhone: "बुवाको फोन नं"
+  motherPhone: "आमाको फोन नं"
+  motherName: "आमाको नाम "
+  fatherName: "बुवाको नाम"
+  markSheet: "मार्कसिट"
+  admissionFor: "भर्ना हुने कक्षा"
+  submit: "बुझौनुहोस"

@@ -27,4 +27,10 @@ class DisplaysController < ApplicationController
     end
   end
 
+  def new
+    if params[:new] == "admission"
+      @admission = Admission.new
+    end
+  end
+
 end
