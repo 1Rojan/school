@@ -151,7 +151,7 @@ section.wow.zoomIn data-wow-duration="2s"
 
                   br
                   img.img-thumbnail#showImg alt=" " src="#" style="height:150px;"
-                  - if @admission.nil? == false
+                  / - if @admission.nil? == false
                     - if @admission.image.attached?
                       = image_tag @admission.image, style: 'height:160px;', class: 'prevImg mt-3'
         .col-3.mx-auto
