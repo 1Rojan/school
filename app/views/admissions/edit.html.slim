@@ -1,8 +1,8 @@
-h1 Editing admission
+h1.text-center.mt-4 =t'edit'
 
 == render 'form'
 
-=> link_to 'Show', @admission
-'|
-=< link_to 'Back', admissions_path
+/ => link_to "#{t'edit'}", @admission
+/ '|
+/ =< link_to "#{t'back'}", admissions_path
 

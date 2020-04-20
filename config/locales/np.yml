@@ -38,6 +38,29 @@ np:
           attributes:
             name:
               blank: "कृपया नाम भर्नुहोस"
+            email:
+              blank: "कृपया ईमेल भर्नुहोस"
+              taken: "ईमेल पहिल्यै लिइएको छ"
+            address:
+              blank: "कृपया ठेगाना भर्नुहोस"
+            admission:
+              blank: "कृपया ्कुल भर्ना भर्नुहोस"
+            dob:
+              blank: "कृपया जन्म मिती भर्नुहोस"
+            gender:
+              blank: "कृपया लिंग भर्नुहोस"
+            phone:
+              blank: "कृपया फोन नं भर्नुहोस"
+            father_phone:
+              blank: "कृपया बुवाको फोन नं भर्नुहोस"
+            father_name:
+              blank: "कृपया बुवाको नाम भर्नुहोस"
+            mother_name:
+              blank: "कृपया आमाको नाम भर्नुहोस"
+            mother_phone:
+              blank: "कृपया आमाको फोन नं भर्नुहोस"
+
+
 
   login: "लग - इन"
   email: "ईमेल"

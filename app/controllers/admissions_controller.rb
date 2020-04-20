@@ -1,7 +1,8 @@
 class AdmissionsController < DashboardsController
   before_action :set_admission, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: 'create'
-  layout "application", only: [:create]
+  layout "application", except:  'index'
+  layout "dashboard", only:  [:index, :show, :edit, :update, :destroy]
   # GET /admissions
   # GET /admissions.json
   def index
@@ -69,6 +70,6 @@ class AdmissionsController < DashboardsController
 
     # Only allow a list of trusted parameters through.
     def admission_params
-      params.require(:admission).permit(:name, :dob, :gender, :address, :phone, :email, :father_name, :mother_name, :father_phone, :mother_phone, :admission_for, :mark_sheet)
+      params.require(:admission).permit(:name, :dob, :gender, :address, :phone, :email, :father_name, :mother_name, :father_phone, :mother_phone, :admission_for, :image)
     end
 end

@@ -1,42 +1,116 @@
-p#notice = notice
+/ p#notice = notice
+/
+/ p
+/   strong Name:
+/   = @admission.name
+/ p
+/   strong Dob:
+/   = @admission.dob
+/ p
+/   strong Gender:
+/   = @admission.gender
+/ p
+/   strong Address:
+/   = @admission.address
+/ p
+/   strong Phone:
+/   = @admission.phone
+/ p
+/   strong Email:
+/   = @admission.email
+/ p
+/   strong Father name:
+/   = @admission.father_name
+/ p
+/   strong Mother name:
+/   = @admission.mother_name
+/ p
+/   strong Father phone:
+/   = @admission.father_phone
+/ p
+/   strong Mother phone:
+/   = @admission.mother_phone
+/ p
+/   strong Admission for:
+/   = @admission.admission_for
+/ p
+/   strong Mark sheet:
+/   = @admission.mark_sheet
+/
+/ => link_to 'Edit', edit_admission_path(@admission)
+/ '|
+/ =< link_to 'Back', admissions_path
 
-p
-  strong Name:
-  = @admission.name
-p
-  strong Dob:
-  = @admission.dob
-p
-  strong Gender:
-  = @admission.gender
-p
-  strong Address:
-  = @admission.address
-p
-  strong Phone:
-  = @admission.phone
-p
-  strong Email:
-  = @admission.email
-p
-  strong Father name:
-  = @admission.father_name
-p
-  strong Mother name:
-  = @admission.mother_name
-p
-  strong Father phone:
-  = @admission.father_phone
-p
-  strong Mother phone:
-  = @admission.mother_phone
-p
-  strong Admission for:
-  = @admission.admission_for
-p
-  strong Mark sheet:
-  = @admission.mark_sheet
 
-=> link_to 'Edit', edit_admission_path(@admission)
-'|
-=< link_to 'Back', admissions_path
+
+.col-12.mt-5.d-flex.justify-content-center
+  .card.shadow-lg.p-3.mb-5.bg-white.rounded
+    - if @admission.image.attached?
+      = image_tag @admission.image, style: 'height:400px'
+    .card-body
+      .row
+        .col-6
+          table.table.w-100
+            tr
+              td
+                h5.font-weight-bold #{t'name'}:
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.name
+            tr
+              td
+                h5.font-weight-bold  #{t'dob'}:
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.dob
+            tr
+              td
+                h5.font-weight-bold #{t'gender'} :
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.gender
+            tr
+              td
+                h5.font-weight-bold #{t'address'} :
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.address
+            tr
+              td
+                h5.font-weight-bold #{t'phone'} :
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.phone
+            tr
+              td
+                h5.font-weight-bold #{t'email'} :
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.email
+
+        .col-6
+          table.table.w-100
+            tr
+              td
+                h5.font-weight-bold #{t'fatherName'}':
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.father_name
+            tr
+              td
+                h5.font-weight-bold #{ t'fatherPhone'}':
+
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.father_phone
+            tr
+              td
+                h5.font-weight-bold #{ t'motherName'}':
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.mother_name
+            tr
+              td
+                h5.font-weight-bold #{ t'motherPhone'}':
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.mother_phone
+            tr
+              td
+                h5.font-weight-bold #{ t'admissionFor'}':
+              td
+                h6.card-title.text-center.font-weight-bold.mb-0 = @admission.admission_for
+      span
+    .card-body
+      = link_to "#{t 'edit'}", edit_admission_path(@admission),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t 'back'}", admissions_path,class: 'card-link btn btn btn-secondary'

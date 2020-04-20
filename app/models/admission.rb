@@ -5,6 +5,8 @@ class Admission < ApplicationRecord
 
   has_one_attached :image
 
-  validates :name,:dob, :gender, :address, :phone, :email, :father_name, :father_phone,
-            :mother_name,:mother_phone,:admission_for, presence: true
+  validates :name,:dob, :gender, :address, :phone, :father_name,
+            :mother_name,:admission_for, presence: true
+
+  validates :email, uniqueness: true
 end
