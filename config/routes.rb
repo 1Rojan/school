@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  
+  resources :admissions
   resources :intros
-  devise_for :users
+  devise_for :users do
+    get 'login', to: 'devise/sessions#new'
+  end
   resources :notices
   resources :teams
   resources :galleries

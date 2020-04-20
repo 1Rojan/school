@@ -1,0 +1,99 @@
+= form_for @admission do |f|
+  - if @admission.errors.any?
+    #error_explanation
+      / h2 = "#{pluralize(@admission.errors.count, "error")} prohibited this admission from being saved:"
+      ul
+        - @admission.errors.full_messages.each do |message|
+          li = message
+
+  .row.my-5
+    .col-6.d-flex.justify-content-around
+      table.w-75
+        tr
+          td.p-3
+            = f.label :name, "#{t 'name'}"
+
+          td.p-3
+            = f.text_field :name, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :dob, "#{t 'dob'}"
+
+          td.p-3
+            = f.date_field :dob, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :gender, "#{t 'gender'}"
+
+          td.p-3
+            / = f.select :admission_for,options_for_select([['Male', 'male'], ['Female', 'Female'], ['Other', 'other']]), id: :gender
+            / = f.select :admission_for,Admission.genders.map{|k| k}, id: :gender
+            = f.select :gender, Admission.genders.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :address, "#{t 'address'}"
+
+          td.p-3
+            = f.text_field :address, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :phone, "#{t 'phone'}"
+
+          td.p-3
+            = f.text_field :phone, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :email, "#{t 'email'}"
+
+          td.p-3
+            = f.text_field :email, class: 'form-control'
+    .col-6
+      table
+        tr
+          td.p-3
+            = f.label :father_name, "#{t 'fatherName'}"
+
+          td.p-3
+            = f.text_field :father_name, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :mother_name, "#{t 'motherName'}"
+
+          td.p-3
+            = f.text_field :mother_name, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :father_phone, "#{t 'fatherPhone'}"
+
+          td.p-3
+            = f.text_field :father_phone, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :mother_phone, "#{t 'motherPhone'}"
+
+          td.p-3
+            = f.text_field :mother_phone, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :admission_for, "#{t 'admissionFor'}"
+
+          td.p-3
+            = f.select :admission_for, Admission.admission_fors.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control'
+        tr
+          td.p-3
+            = f.label :mark_sheet, "#{t 'markSheet'}"
+
+          td.p-3
+            = f.hidden_field :image, class: ''
+            = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp'
+            button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn = t 'addImage'
+          td
+
+            br
+            img.img-thumbnail#showImg alt=" " src="#" style="height:150px;"
+            - if @admission.nil? == false
+              - if @admission.image.attached?
+                = image_tag @admission.image, style: 'height:160px;', class: 'prevImg mt-3'
+    .col-3.mx-auto
+      .actions.mt-5
+        button.btn.btn-lg.px-5.btn-outline-success type= "submit" = t 'submit'

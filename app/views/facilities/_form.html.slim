@@ -3,7 +3,7 @@
     = form_for @facility, :html => {:style => 'background-color:whitesmoke;'} do |f|
       - if @facility.errors.any?
         #error_explanation
-          h2 = "#{pluralize(@facility.errors.count, "error")} prohibited this food_item from being saved:"
+          h2 = "#{pluralize(@facility.errors.count, "error")} prohibited this  from being saved:"
           ul
             - @facility.errors.full_messages.each do |message|
               li = message
