@@ -11,6 +11,7 @@
         th =t'title'
         th =t'description'
         th =t'published'
+        th =t'image'
         th =t'action'
         th
 
@@ -21,10 +22,12 @@
           td.text-justify = notice.title
           td.text-justify = notice.description
           td.text-justify = notice.published
-          / - if notice.image.attached?
+          - if notice.image.attached?
             td
               div style="height=100px"
-                = image_tag (notice.image), class: 'img-thumbnail', style: "height:50px"
+                = link_to "view", (notice.image), class: 'img-thumbnail', style: "height:50px"
+          -else
+            td
           td.pr-0
             = link_to notice
               i.fas.fa-eye.text-info.mr-1.ml-0
