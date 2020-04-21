@@ -7,7 +7,7 @@
           ul
             - @intro.errors.full_messages.each do |message|
               li = message
-      .row.mt-5
+      .row.my-5
         .col-8
           table
             tr
@@ -17,5 +17,5 @@
                 = f.text_field :name, class: 'form-control'
 
 
-      .actions.mt-5.float-right
-        button type="submit" =t'add'
+      .actions.mt-3.mb-5
+        button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'

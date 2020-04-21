@@ -9,7 +9,7 @@
             h4.card-title =  t 'about_school'
             p.font-weight-bolder.text-info.card-text = About.all.count.to_s + "  " + "#{t'about_school'}"
       btn.btn-sm.btn-primary.ml-auto
-        = link_to "#{t 'add'}", new_about_path, class: 'text-light'
+        = link_to "#{t 'edit'}", abouts_path, class: 'text-light'
   .col-sm-5.offset-1.bg-light
     .card.mb-1.shadow-lg.p-3.mb-5.bg-white.rounded style=("max-width: 540px;")
       .row.no-gutters

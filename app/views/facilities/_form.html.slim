@@ -7,18 +7,20 @@
           ul
             - @facility.errors.full_messages.each do |message|
               li = message
-      .row.mt-5
+      .row.my-5
         .col-8
           table
             tr
-              td.p-3
+              td.pt-4
                 = f.label :name, "#{t 'name'}"
-              td.p-3
+            tr
+              td
                 = f.text_field :name, class: 'form-control'
             tr
-              td.p-3
+              td.pt-4
                 = f.label :description, "#{t 'description'}"
-              td.p-3
+            tr
+              td
                 = f.text_area :description, size: "80x10", class: 'form-control'
             / tr
               td.p-3
@@ -38,8 +40,8 @@
               - if @facility.nil? == false
                 - if @facility.image.attached?
                   = image_tag @facility.image, style: 'height:160px;', class: 'prevImg mt-3'
-      .actions.mt-5.float-right
-        button type= "submit"  = t'add'
+      .actions.mt-3.mb-5
+        button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'
 
 
 

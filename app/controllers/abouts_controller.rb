@@ -6,23 +6,25 @@ class AboutsController < DashboardsController
     @abouts = About.all
   end
 
+  def show
+
+  end
   def new
     @about = About.new
   end
 
   def create
     @about = About.new(about_params)
-
-
   end
 
   def edit
   end
 
   def update
-    @about.update(about_params)
     if @about.update(about_params)
-     redirect_to @about, notice: 'About was successfully updated.'
+      redirect_to @about, notice: 'About was successfully updated.'
+    else
+      format.html { render :edit }
     end
   end
 
@@ -40,6 +42,6 @@ class AboutsController < DashboardsController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def about_params
-    params.require(:about).permit(:description, :intro_id)
+    params.require(:about).permit(:title, :description, :intro_id)
   end
 end

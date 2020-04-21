@@ -7,7 +7,7 @@
           ul
             - @notice.errors.full_messages.each do |message|
               li = message
-      .row.mt-5
+      .row.my-5
         .col-5
           table
             tr
@@ -50,8 +50,8 @@
               - if @notice.nil? == false
                 - if @notice.image.attached?
                   = image_tag @notice.image, style: 'height:160px;', class: 'prevImg mt-3'
-      .actions.mt-5.float-right
-        button type="submit" = t 'add'
+      .actions.mt-3.mb-5
+        button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'
 
 
 
