@@ -41,6 +41,6 @@ class NoticesController < DashboardsController
     end
 
     def notice_params
-      params.require(:notice).permit(:title, :description, :published)
+      params.require(:notice).permit(:title, :description, :published, :image)
     end
 end

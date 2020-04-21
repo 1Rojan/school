@@ -20,6 +20,11 @@
                 = f.label :published, "#{t 'published'}"
                 td.p-3
                   = f.date_field :published, class: 'form-control'
+            tr
+              td.p-3
+                = f.label :image, "#{t 'image'}"
+                td.p-3
+                  = f.file_field :image, class: 'form-control'
 
         / tr
               td.p-3

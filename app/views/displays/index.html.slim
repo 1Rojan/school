@@ -38,9 +38,13 @@ section#index
                       |Published : &nbsp;
                     span
                       = information.published
+                  - if information.image.attached?
+                    p.mt-4
+                      div style="height=100px"
+                        = link_to "view", (information.image), class: 'btn btn-lg btn-outline-secondary'
 
 /! Modal
--if @notices.nil? ==false
+/ -if @notices.nil? ==false
   - @notices.all.each do |information|
     .modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" id="example#{information.id}"
       .modal-dialog.modal-dialog-centered role="document"
