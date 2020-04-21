@@ -1,0 +1,56 @@
+.row
+  .col-10.offset-1.mt-3
+    = form_for @splash, :html => {:style => 'background-color:whitesmoke;'} do |f|
+      - if @splash.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@splash.errors.count, "error")} prohibited this from being saved:"
+          ul
+            - @splash.errors.full_messages.each do |message|
+              li = message
+      table
+        tr
+          td
+            = f.label :name, "#{t 'name'}"
+        tr
+          td
+            = f.text_field :name
+        tr
+          td.pt-5
+            = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp'
+            button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn =t'addImage'
+            br
+            br
+            img.img-thumbnail#showImg alt=" " src="#" style="height:150px;"
+            - if @splash.nil? == false
+              - if @splash.image.attached?
+                = image_tag @splash.image, style: 'height:160px;', class: 'prevImg mt-3'
+      .actions.mt-5.float-right
+        button type="submit" =t'add'
+
+
+
+javascript:
+
+    // image preview
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#showImg').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+        document.querySelector('.prevImg').style.display="none";
+    });
+
+    // hidden button click
+    document.querySelector('.imgBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        var uploadImg = document.querySelector('.uploadImg');
+        uploadImg.click();
+    });

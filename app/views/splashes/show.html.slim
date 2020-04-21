@@ -1,0 +1,10 @@
+.col-12.mt-5.d-flex.justify-content-center
+  .card.shadow-lg.p-3.mb-5.bg-white.rounded
+    - if @splash.image.attached?
+      = image_tag @splash.image, style: 'height:400px'
+    .card-body
+      h5.card-title.text-center.font-weight-bold = @splash.name
+      span
+    .card-body
+      = link_to "#{t'edit'}", edit_splash_path(@splash),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t'back'}", splashes_path,class: 'card-link btn btn btn-secondary'

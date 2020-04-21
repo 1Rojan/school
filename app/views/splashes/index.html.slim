@@ -1,0 +1,58 @@
+/ h1 Listing splashes
+/
+/ table
+/   thead
+/     tr
+/       th Name
+/       th
+/       th
+/       th
+/
+/   tbody
+/     - @splashes.each do |splash|
+/       tr
+/         td = splash.name
+/         td = link_to 'Show', splash
+/         td = link_to 'Edit', edit_splash_path(splash)
+/         td = link_to 'Destroy', splash, data: { confirm: 'Are you sure?' }, method: :delete
+/
+/ br
+/
+/ = link_to 'New Splash', new_splash_path
+/
+
+
+
+.col-12.mx-4
+  h1.text-center.my-4 = t 'splash'
+  = link_to new_splash_path
+    btn.btn.btn-primary.text-light
+      = t 'add'
+      i.fas.fa-plus-circle.ml-2
+  table.table.table-.w-100.table-hover
+    thead
+      tr
+        th =t 'sn'
+        th =t 'title'
+        th =t 'image'
+        th =t 'action'
+        th
+
+    tbody
+      -if @splashes.nil? == false
+        - @splashes.each.with_index(1) do |splash, index|
+          tr
+            td = index
+            td.text-justify = splash.name
+            - if splash.image.attached?
+              td
+                div style="height=100px"
+                  = image_tag (splash.image), class: 'img-thumbnail', style: "height:50px"
+            td.pr-0
+              = link_to splash
+                i.fas.fa-eye.text-info.mr-1
+              = link_to edit_splash_path(splash)
+                i.fas.fa-pencil-alt.text-info.ml-1
+              = link_to splash, data: {confirm: 'Are you sure?'}, method: :delete
+                i.fas.fa-trash.text-danger.ml-1
+            td

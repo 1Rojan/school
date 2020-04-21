@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :splashes
   resources :admissions
   resources :intros
   devise_for :users do
