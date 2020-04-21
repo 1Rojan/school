@@ -7,8 +7,8 @@
           ul
             - @team.errors.full_messages.each do |message|
               li = message
-      .row.mt-5
-        .col-7
+      .row.my-5
+        .col-6
           table
             tr
               td.p-3
@@ -27,19 +27,13 @@
               td.p-3
                 = f.text_area :description, size: "80x10", class: 'form-control'
 
-        /tr
-              td.p-3
-                = f.label :food_category_ids, "Category"
-              td.py-3
-                = f.collection_check_boxes :food_category_ids, FoodCategory.all, :id, :title
-        / = f.select :food_category_ids, FoodCategory.all.map { |k| [k.title.titleize, k.id] }, class: 'form-control'
 
-
-        .col-5
+        .col-6
           table
             tr
               td
                 = f.label :team_category_id, "#{t'teamCategory'}"
+            tr
               td
                 = f.select :team_category_id, TeamCategory.all.map {|k| [k.name.titleize, k.id]}, class: 'form-control'
             tr
@@ -51,8 +45,8 @@
                 - if @team.nil? == false
                   - if @team.image.attached?
                     = image_tag @team.image, style: 'height:160px;', class: 'prevImg mt-3'
-      .actions.mt-5.float-right
-        button type="submit" =t'add'
+      .actions.mt-3.mb-5
+        button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'
 
 
 
