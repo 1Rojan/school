@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: school_municipality_test
+  database: dibyajyoti
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: school_municipality_production
+  database: dibyajyoti
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['SCHOOL_MUNICIPALITY_DATABASE_PASSWORD'] %>
