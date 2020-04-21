@@ -6,5 +6,5 @@
       h5.card-title.text-center.font-weight-bold = @gallery.description
       span
     .card-body
-      = link_to "#{t'edit'}", edit_about_path(@gallery),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t'edit'}", edit_gallery_path(@gallery),class: 'card-link btn btn btn-secondary'
       = link_to "#{t'back'}", galleries_path,class: 'card-link btn btn btn-secondary'

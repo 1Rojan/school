@@ -1,8 +1,8 @@
 .col-12.mt-5.d-flex.justify-content-center
   .card.shadow-lg.p-3.mb-5.bg-white.rounded
     .card-body
-      h5.card-title.text-center.font-weight-bold = @intro.name
+      h5.card-title.text-center.font-weight-bold = @category.name
       span
     .card-body
-      = link_to "#{t'edit'}", edit_intro_path(@intro),class: 'card-link btn btn btn-secondary'
-      = link_to "#{t'back'}", intros_path,class: 'card-link btn btn btn-secondary '
+      = link_to "#{t'edit'}", edit_team_category_path(@category),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t'back'}", team_categories_path,class: 'card-link btn btn btn-secondary '

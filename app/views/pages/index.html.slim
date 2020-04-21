@@ -320,6 +320,88 @@ section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-du
           textarea.w-100.form-control placeholder="तपाइँको सन्देश"
         button.btn.btn-primary.btn-lg.text-ligh.mx-auto.p-1 बुझाउनुहोस्
 
+ruby:
+  if Splash.count != 0
+    splash_image = Splash.first.image
+  else
+    splash_image = nil
+  end
+
+  js = if @splashes.present?
+         @splashes.map do |splash|
+           if splash.image.attached?
+             if splash.image
+               %Q(
+                         var file = "#{url_for(splash.image)}"
+                         var mark = showImage(file)
+                       )
+             end
+           else
+             %Q(
+                                            var file = "#{asset_path('namaste.jpg')}"
+                                            var mark = showImage(file)
+                                         )
+           end
+         end.compact
+       else
+         [%Q(
+                                      var file = "#{asset_path('namaste.jpg')}"
+                                      var mark = showImage(file)
+                                   )]
+       end
+
+javascript:
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        if (!document.cookie.match(/^(.*;)?\s*splash\s*=\s*[^;]+(.*)?$/)) {
+            var wrapper = document.querySelector('.wrapper');
+            var modal = document.createElement('div');
+            modal.className = "modal bg-light";
+            modal.style.backgroundColor = "white";
+            modal.style.display = "block";
+            wrapper.appendChild(modal);
+
+
+            function showImage(file) {
+                var markup = [
+                    "<div class='col-8 mx-auto py-4'>",
+                    "<div class='col-12 text-center mb-2'>",
+                    "<h2 class='text-center d-inline'>हाम्रो साइटमा स्वागत छ।</h2>",
+                    "<button class='btn btn-outline-dark mb-2 ml-3 enterBtn'>प्रविष्ट गर्नुहोस्</button>",
+                    "</div>",
+                    "<img src='" + file + "' width='100%' class='border rounded p-3 bg-white shadow-sm'>",
+                    "</div>"
+                ].join('');
+                return markup;
+            }
+
+            #{js.join("\n").html_safe}
+            modal.innerHTML = mark;
+            document.cookie = "splash=splashScreen";
+
+            var video = document.querySelector('.splashVid');
+            if (video) {
+                video.oncanplay = function () {
+                    console.log(video.duration);
+                    var length = Math.ceil(video.duration) * 1000;
+                    setTimeout(function () {
+                        wrapper.removeChild(modal)
+                    }, length);
+                }
+            } else {
+                setTimeout(function () {
+                    wrapper.removeChild(modal)
+                }, 6000);
+            }
+
+            var enterBtn = document.querySelector('.enterBtn');
+            enterBtn.addEventListener('click', function () {
+                wrapper.removeChild(modal);
+            })
+        }
+
+    });
 
 css:
   .about{
