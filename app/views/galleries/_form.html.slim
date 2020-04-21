@@ -31,9 +31,9 @@
               button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn =t'addImage'
               br
               img.img-thumbnail#showImg alt=" " src="#" style="height:150px;"
-              - if @facility.nil? == false
-                - if @facility.image.attached?
-                  = image_tag @facility.image, style: 'height:160px;', class: 'prevImg mt-3'
+              - if @gallery.nil? == false
+                - if @gallery.image.attached?
+                  = image_tag @gallery.image, style: 'height:160px;', class: 'prevImg mt-3'
       .actions.mt-5.float-right
         button type="submit" =t'add'
 
