@@ -3,7 +3,7 @@
   = link_to new_about_path
     btn.btn.btn-primary.text-light =t 'add'
       i.fas.fa-plus-circle.ml-2
-  table.table.table-.w-100.table-hover
+  table.table.table-hover
     thead
       tr
         th = t 'sn'
@@ -18,7 +18,7 @@
           tr
             td = index
             / td = order.comment
-            td.text-justify = about.description
+            td = about.description
             td = Intro.find("#{about.intro_id}").name
             td.px-0
               - if about.image.attached?
@@ -32,3 +32,4 @@
                 i.fas.fa-pencil-alt.text-info.ml-1
               = link_to about, data: {confirm: 'Are you sure?'}, method: :delete
                 i.fas.fa-trash.text-danger.ml-1
+
