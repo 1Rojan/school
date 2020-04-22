@@ -1,0 +1,9 @@
+.col-9.mx-auto.mt-5.d-flex.justify-content-center
+  .card.shadow-lg.p-3.mb-5.bg-white.rounded
+    .card-body
+      h4.font-weight-bold = t'footer'
+      h5.card-title.text-justify = @footer.description
+      span
+    .card-body
+      = link_to "#{t'edit'}", edit_footer_path(@footer),class: 'card-link btn btn btn-secondary'
+      = link_to "#{t'back'}", footers_path,class: 'card-link btn btn btn-secondary'

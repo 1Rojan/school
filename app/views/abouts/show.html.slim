@@ -1,7 +1,12 @@
-.col-12.mt-5.d-flex.justify-content-center
+.col-9.mx-auto.mt-5.d-flex.justify-content-center
   .card.shadow-lg.p-3.mb-5.bg-white.rounded
+    - if @about.image.attached?
+      = image_tag @about.image, style: 'height:350px'
     .card-body
-      h5.card-title.text-center.font-weight-bold = @about.description
+      h4.font-weight-bold = @about.title
+      h5.card-title.text-justify = @about.description
+      h4.font-weight-bold = t'introCategory'
+      h5.card-title.text-justify = @about.intro.name
       span
     .card-body
       = link_to "#{t'edit'}", edit_about_path(@about),class: 'card-link btn btn btn-secondary'

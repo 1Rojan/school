@@ -63,16 +63,18 @@ section.d-none.d-md-block style="background: url(#{asset_path('indeximage1.jpg')
 
         .col-9.mt-5
           h5.card-text.text-light.text-justify.mt-5.about.wow.fadeInRight data-wow-duration="2s"
-            = About.last.description
-
-
+            = About.first.description[0...1000] + '...'
+          .col-4.offset-8.mt-5
+            = link_to "थप हेर्नुहोस", display_path(About, about_id: About.first.id), class: 'text-decoration-none btn btn-outline-light px-5 wow fadeInUp'
+            / button.btn.btn-outline-light.px-5.wow.fadeInUp data-wow-duration="3s" href=""
 / About section (mobile view)
 section.d-block.d-md-none style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 60vh; background-size: cover;"
   .row.mx-0
     .col-12 style=("background-color:#192f59 !impoaaprtant; height: 60vh;opacity:0.8;")
       h3.card-title.text-success.font-weight-bold.mx-auto.text-center.mt-4  स्कूलको परिचय
-      h5.card-text.text-light.text-justify.mt-5.about
+      h5.card-text.text-light.text-justify.mt-5.about.wow.fadeInRight data-wow-duration="2s"
         = About.last.description
+
 
 
 / Facility section (Desktop)
@@ -112,10 +114,10 @@ section.d-none.d-md-block.wow.fadeInUp data-wow-duration="2s"
                     .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
                   .card-footer.bg-transparent.text-justify
                     = infrastructure.description
-        - TeamCategory.first.team.all.each_slice(3) do |member|
+        - Facility.all[3..-1].each_slice(3) do |member|
           .carousel-item
             .col-12.d-flex.justify-content-around
-              - Facility.all[0...1].each do |infrastructure|
+              - member[0...1].each do |infrastructure|
                 .col-4.px-0
                   .card.mb-3.border-0
                     .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
@@ -124,7 +126,7 @@ section.d-none.d-md-block.wow.fadeInUp data-wow-duration="2s"
                       .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
                     .card-footer.bg-transparent.text-justify
                       = infrastructure.description
-              - Facility.all[1...2].each do |infrastructure|
+              - member[1...2].each do |infrastructure|
                 .col-4.px-0
                   .card.mb-3.border-0
                     .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.96;')
@@ -133,7 +135,7 @@ section.d-none.d-md-block.wow.fadeInUp data-wow-duration="2s"
                       .card-body.text-success style="background: url(#{url_for(infrastructure.image)}) no-repeat; height: 40vh; background-size: cover;"
                     .card-footer.bg-transparent.text-justify
                       = infrastructure.description
-              - Facility.all[2...3].each do |infrastructure|
+              - member[2...3].each do |infrastructure|
                 .col-4.px-0
                   .card.mb-3.border-0
                     .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;opacity:0.92;')
@@ -300,7 +302,7 @@ section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-du
     .col-md-6.mb-5
       div style="width = 300px;"
       div.d-none.d-md-block
-        iframe src="https://wego.here.com/directions/mix//Unique-Hydro-and-Electric-Pvt.-Ltd.,-Rudramati-Marg,-32,-Kathmandu:e-eyJuYW1lIjoiVW5pcXVlIEh5ZHJvIGFuZCBFbGVjdHJpYyBQdnQuIEx0ZC4iLCJhZGRyZXNzIjoiVGVlbmt1bmUsIE5lYXIgUGVudGFnb24gQ29sbGFnZSwgS2F0aG1hbmR1LCBOZXBhbCIsImxhdGl0dWRlIjoyNy43LCJsb25naXR1ZGUiOjg1LjMzMzMsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MzIwOTU5MTA0NzczNTI3fQ==?map=27.69785,85.32742,15,normal&fb_locale=en_US" width="600" height="450" style="border:0;" allowfullscreen=""
+        iframe src="https://wego.here.com/nepal/kaseni/city-town-village/7--loc-dmVyc2lvbj0xO3RpdGxlPTc7bGF0PTI3LjgxMDk0MTtsb249ODMuNTg2MDQ7Y2l0eT1LYXNlbmk7Y291bnRyeT1OUEw7ZGlzdHJpY3Q9NztzdGF0ZUNvZGU9THVtYmluaTtjb3VudHk9UGFscGE7Y2F0ZWdvcnlJZD1jaXR5LXRvd24tdmlsbGFnZTtzb3VyY2VTeXN0ZW09aW50ZXJuYWw?map=27.81094,83.58604,13,normal&fb_locale=en_US&msg=7" width="600" height="450" style="border:0;" allowfullscreen=""
       div.d-block.d-md-none.w-100
         iframe.w-100 src="https://wego.here.com/directions/mix//Unique-Hydro-and-Electric-Pvt.-Ltd.,-Rudramati-Marg,-32,-Kathmandu:e-eyJuYW1lIjoiVW5pcXVlIEh5ZHJvIGFuZCBFbGVjdHJpYyBQdnQuIEx0ZC4iLCJhZGRyZXNzIjoiVGVlbmt1bmUsIE5lYXIgUGVudGFnb24gQ29sbGFnZSwgS2F0aG1hbmR1LCBOZXBhbCIsImxhdGl0dWRlIjoyNy43LCJsb25naXR1ZGUiOjg1LjMzMzMsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MzIwOTU5MTA0NzczNTI3fQ==?map=27.69785,85.32742,15,normal&fb_locale=en_US"  height="350px " style="border:0;" allowfullscreen=""
     .col-md-6.mb-5

@@ -43,3 +43,6 @@
             p.font-weight-bolder.text-info.card-text = Notice.all.count.to_s + "  " + "#{t 'notice'}"
       btn.btn-sm.btn-primary.ml-auto
         = link_to "#{t 'add'}", new_notice_path, class: 'text-light'
+
+  .col-2.offset-10
+    = link_to "फूटर थप्नुहोस", new_footer_path, class:'btn btn btn-outline-secondary'

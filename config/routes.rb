@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :footers
   resources :splashes
   resources :admissions
   resources :intros

@@ -27,11 +27,19 @@ section.wow.zoomIn data-wow-duration="2s"
       =@intro.name
     .row.container-fluid.mt-5
       .col-4
-        div.img-thumbnail style="background: url(#{asset_path("principal1.jpg")}) no-repeat; height: 400px; background-size: cover;"
-        / = image_tag("principal1.jpg")
+        -if @about_image.nil? == false
+          -if @about_image.image.attached?
+            div.img-thumbnail style="background: url(#{url_for(@about_image.image)}) no-repeat; height: 400px; background-size: cover;"
+
       .col-8
-        =@intro.abouts.all[0...1].each do |intr|
+        -@intro.abouts.all[0...1].each do |intr|
           = intr.description
+
+  - if @about.nil? == false
+    h2.text-center.bg-dark.text-light.py-2.px-0
+      = @about.title
+    .col-11.mt-5.mx-auto
+      =@about.description
         / .col-md-4
         /   / =image_tag(@team.image)
         /   div.mx-auto.mt-0 style="background: url(#{url_for(@team.image)}) no-repeat;height:400px"

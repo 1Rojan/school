@@ -18,7 +18,7 @@ class TeamCategoriesController < DashboardsController
       @category = TeamCategory.create(category_params)
     end
     if @category.persisted?
-      redirect_to team_categories_path, notice: 'Team Category created'
+      redirect_to team_categories_path, notice: 'सफलतापूर्वक थपियो |'
     end
 
   end
@@ -33,14 +33,14 @@ class TeamCategoriesController < DashboardsController
     end
 
     if @category.update(category_params)
-      redirect_to team_category_path, notice: 'Team Category was updated'
+      redirect_to team_category_path, notice: 'सफलतापूर्वक सम्पादित गरियो |'
     end
 
   end
 
   def destroy
     if @category.destroy
-      redirect_to team_categories_path, notice: 'Category was destroyed'
+      redirect_to team_categories_path, notice: 'सफलतापूर्वक मेटाईयो |'
     end
 
   end

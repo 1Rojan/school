@@ -13,7 +13,7 @@ class FacilitiesController < DashboardsController
   def create
     @facility = Facility.new(facility_params)
     if @facility.save
-    redirect_to facilities_path, notice: 'Facility was successfully created.'
+    redirect_to facilities_path, notice: 'सफलतापूर्वक थपियो |'
   end
   end
 
@@ -23,13 +23,13 @@ class FacilitiesController < DashboardsController
   def update
     @facility.update(facility_params)
     if @facility.update(facility_params)
-      redirect_to @facility, notice: 'Facility was created'
+      redirect_to @facility, notice: 'सफलतापूर्वक सम्पादित गरियो |'
     end
   end
 
   def destroy
     @facility.destroy
-    redirect_to @facility, notice: 'Facility was destroyed'
+    redirect_to @facility, notice: 'सफलतापूर्वक मेटाईयो |'
   end
 
   private

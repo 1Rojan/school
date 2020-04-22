@@ -14,7 +14,7 @@ class GalleriesController < DashboardsController
     Gallery.transaction do
     @gallery = Gallery.create!(gallery_params)
     if @gallery.persisted?
-      redirect_to galleries_path, notice: 'Gallery was created'
+      redirect_to galleries_path, notice: 'सफलतापूर्वक थपियो |'
     end
     end
   end
@@ -24,13 +24,13 @@ class GalleriesController < DashboardsController
 
   def update
     if @gallery.update(gallery_params)
-      redirect_to @gallery, notice: 'Gallery was updated'
+      redirect_to @gallery, notice: 'सफलतापूर्वक सम्पादित गरियो |'
     end
   end
 
   def destroy
     @gallery.destroy
-    redirect_to galleries_path, notice: 'Gallery was destroyed'
+    redirect_to galleries_path, notice: 'सफलतापूर्वक मेटाईयो |'
   end
 
   private

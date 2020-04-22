@@ -13,7 +13,7 @@ class TeamsController < DashboardsController
   def create
     @team = Team.create(team_params)
     if @team.persisted?
-      redirect_to teams_path , notice: 'Team Created'
+      redirect_to teams_path , notice: 'सफलतापूर्वक थपियो |'
     end
   end
 
@@ -23,13 +23,13 @@ class TeamsController < DashboardsController
   def update
     if @team.update(team_params)
 
-      redirect_to team_path, notice: 'Team Updated'
+      redirect_to team_path, notice: 'सफलतापूर्वक सम्पादित गरियो |'
     end
   end
 
   def destroy
     if @team.destroy
-      redirect_to teams_path, notice: 'Team Destroyed'
+      redirect_to teams_path, notice: 'सफलतापूर्वक मेटाईयो |'
     end
 
   end

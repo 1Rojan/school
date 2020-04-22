@@ -28,7 +28,7 @@ class IntrosController < DashboardsController
 
     respond_to do |format|
       if @intro.save
-        format.html { redirect_to @intro, notice: 'Intro was successfully created.' }
+        format.html { redirect_to @intro, notice: 'सफलतापूर्वक थपियो |' }
         format.json { render :show, status: :created, location: @intro }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class IntrosController < DashboardsController
   def update
     respond_to do |format|
       if @intro.update(intro_params)
-        format.html { redirect_to @intro, notice: 'Intro was successfully updated.' }
+        format.html { redirect_to @intro, notice: 'सफलतापूर्वक सम्पादित गरियो |' }
         format.json { render :show, status: :ok, location: @intro }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class IntrosController < DashboardsController
   def destroy
     @intro.destroy
     respond_to do |format|
-      format.html { redirect_to intros_url, notice: 'Intro was successfully destroyed.' }
+      format.html { redirect_to intros_url, notice: 'सफलतापूर्वक मेटाईयो |' }
       format.json { head :no_content }
     end
   end
