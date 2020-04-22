@@ -29,7 +29,7 @@ class AdmissionsController < DashboardsController
     @admission = Admission.new(admission_params)
     respond_to do |format|
       if @admission.save
-        format.html { redirect_to root_path, notice: 'Admission was successfully created.' }
+        format.html { redirect_to root_path, notice: 'सफलतापूर्वक थपियो |' }
         format.json { render :show, status: :created, location: @admission }
       else
         format.html { render new_display_path }
@@ -43,7 +43,7 @@ class AdmissionsController < DashboardsController
   def update
     respond_to do |format|
       if @admission.update(admission_params)
-        format.html { redirect_to @admission, notice: 'Admission was successfully updated.' }
+        format.html { redirect_to @admission, notice: 'सफलतापूर्वक सम्पादित गरियो |' }
         format.json { render :show, status: :ok, location: @admission }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class AdmissionsController < DashboardsController
   def destroy
     @admission.destroy
     respond_to do |format|
-      format.html { redirect_to admissions_url, notice: 'Admission was successfully destroyed.' }
+      format.html { redirect_to admissions_url, notice: 'सफलतापूर्वक मेटाईयो |' }
       format.json { head :no_content }
     end
   end

@@ -14,7 +14,7 @@ class NoticesController < DashboardsController
     @notice = Notice.create(notice_params)
     end
     if @notice.persisted?
-      redirect_to notices_path, notice: 'Notice was created'
+      redirect_to notices_path, notice: 'सफलतापूर्वक थपियो |'
     end
   end
 
@@ -26,13 +26,13 @@ class NoticesController < DashboardsController
     @notice.update(notice_params)
     end
     if @notice.update!(notice_params)
-      redirect_to @notice, notice: 'Notice was updated'
+      redirect_to @notice, notice: 'सफलतापूर्वक सम्पादित गरियो |'
     end
   end
 
   def destroy
     @notice.destroy
-    redirect_to notices_path, notice: 'Notice was destroyed'
+    redirect_to notices_path, notice: 'सफलतापूर्वक मेटाईयो |'
   end
 
   private

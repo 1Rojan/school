@@ -1,27 +1,35 @@
 .col-12.mx-4
   h1.text-center.my-4 = t 'about_school'
-  / = link_to new_about_path
-    btn.btn-sm.btn-primary.text-light
-      | Add About
+  = link_to new_about_path
+    btn.btn.btn-primary.text-light =t 'add'
       i.fas.fa-plus-circle.ml-2
-  table.table.table-.w-100.table-hover
+  table.table.table-hover
     thead
       tr
         th = t 'sn'
         th = t 'description'
+        th = t 'introCategory'
+        th = t 'image'
         th = t 'action'
-        th
 
     tbody
-      - @abouts.each.with_index(1) do |about, index|
-        tr
-          td = index
-          / td = order.comment
-          td.text-justify = about.description
-          td.pr-0
-            = link_to about
-              i.fas.fa-eye.text-info.mr-1
-            = link_to edit_about_path(about)
-              i.fas.fa-pencil-alt.text-info.ml-1
-            = link_to about, data: {confirm: 'Are you sure?'}, method: :delete
-              i.fas.fa-trash.text-danger.ml-1
+      -if @abouts.nil? == false
+        - @abouts.each.with_index(1) do |about, index|
+          tr
+            td = index
+            / td = order.comment
+            td = about.description
+            td = Intro.find("#{about.intro_id}").name
+            td.px-0
+              - if about.image.attached?
+                = image_tag (about.image), class: '', style: "height:80px;"
+
+
+            td.pr-0
+              = link_to about
+                i.fas.fa-eye.text-info.mr-1
+              = link_to edit_about_path(about)
+                i.fas.fa-pencil-alt.text-info.ml-1
+              = link_to about, data: {confirm: 'Are you sure?'}, method: :delete
+                i.fas.fa-trash.text-danger.ml-1
+

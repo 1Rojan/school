@@ -3,32 +3,61 @@
     = form_for @about, :html => {:style => 'background-color:whitesmoke;'} do |f|
       - if @about.errors.any?
         #error_explanation1
-          h2 = "#{pluralize(@about.errors.count, "error")} prohibited this food_category from being saved:"
+          h2 = "#{pluralize(@about.errors.count, "error")} prohibited this from being saved:"
           ul
             - @about.errors.full_messages.each do |message|
               li = message
-      .row.mt-5
+      .row.my-5
         .col-10
-          table
-            tr
-              td
-                = f.label :title, "#{t 'title'}"
-            tr
-              td
-                = f.text_field :title, class:'form-control mb-3'
-            tr
-              td
-                = f.label :intro_id, "#{t 'introCategory'}"
-            tr
-              td
-                / = f.select :intro_id, Intro.all.map{|intr| intr.name, intr.id}, class:'form-control mb-3'
-                = f.select :intro_id, Intro.all.each.map {|k| [k.name, k.id]}, {}, class: 'form-control'
-            tr
-              td
-                = f.label :description, "#{t ('description')}", class:'mt-4'
-            tr
-              td
-                = f.text_area :description, size: "80x10", class: 'form-control'
+          = f.label :title, "#{t 'title'}"
+          = f.text_field :title, class:'form-control mb-3'
+        .col-4
+          = f.label :intro_id, "#{t 'introCategory'}"
+          / = f.select :intro_id, Intro.all.map{|intr| intr.name, intr.id}, class:'form-control mb-3'
+          = f.select :intro_id, Intro.all.each.map {|k| [k.name, k.id]}, {}, class: 'form-control'
+        .col-2
+          =f.label :image, "#{t'image'}"
+          br
+          =f.file_field :image, class:'d-none uploadImg', id: 'imgInp'
+          button.btn.bg-secondary.text-light.rounded.text-left.imgBtn.px-2 = t 'select'
+        .col-5
+          / = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp'
+          / button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn = t 'addImage'
+          img.py-0.img-thumbnail#showImg alt=" " src="#" style="height:100px;"
+          - if @about.nil? == false
+            - if @about.image.attached?
+              = image_tag @about.image, style: 'height:160px;', class: 'prevImg py-0'
+        .col-10
+          = f.label :description, "#{t ('description')}", class:'mt-4'
+          = f.text_area :description, size: "80x10", class: 'form-control'
 
-          .actions.mt-3.mb-5
-            button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'
+      .actions.mt-3.mb-5
+        button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'
+
+
+
+javascript:
+
+    // image preview
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#showImg').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+        document.querySelector('.prevImg').style.display="none";
+    });
+
+    // hidden button click
+    document.querySelector('.imgBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+        var uploadImg = document.querySelector('.uploadImg');
+        uploadImg.click();
+    });

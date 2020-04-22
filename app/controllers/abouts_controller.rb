@@ -15,6 +15,11 @@ class AboutsController < DashboardsController
 
   def create
     @about = About.new(about_params)
+    if @about.save
+      redirect_to abouts_path, notice: 'सफलतापूर्वक थपियो |'
+    else
+      render :create
+    end
   end
 
   def edit
@@ -22,7 +27,7 @@ class AboutsController < DashboardsController
 
   def update
     if @about.update(about_params)
-      redirect_to @about, notice: 'About was successfully updated.'
+      redirect_to @about, notice: 'सफलतापूर्वक सम्पादित गरियो |'
     else
       format.html { render :edit }
     end
@@ -30,7 +35,7 @@ class AboutsController < DashboardsController
 
   def destroy
     @about.destroy
-     redirect_to abouts_url, notice: 'About was successfully destroyed.'
+     redirect_to abouts_url, notice: 'सफलतापूर्वक मेटाईयो |'
   end
 
 
@@ -42,6 +47,6 @@ class AboutsController < DashboardsController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def about_params
-    params.require(:about).permit(:title, :description, :intro_id)
+    params.require(:about).permit(:title, :description, :intro_id, :image)
   end
 end

@@ -6,6 +6,9 @@ class DisplaysController < ApplicationController
       @category = TeamCategory.find(params[:teamCategory_id]).name
     elsif params.include?'introCategory_id'
       @intro = Intro.find(params[:introCategory_id])
+      @about_image = @intro.abouts.first
+    elsif params.include?'about_id'
+      @about = About.find(params[:about_id])
     # elsif params.include?'client_id'
     #   @client = Client.find(params[:client_id])
     # elsif params.include?'clients'

@@ -1,0 +1,30 @@
+/ = form_for @footer do |f|
+/   - if @footer.errors.any?
+/     #error_explanation
+/       h2 = "#{pluralize(@footer.errors.count, "error")} prohibited this footer from being saved:"
+/       ul
+/         - @footer.errors.full_messages.each do |message|
+/           li = message
+/
+/   .field
+/     = f.label :description
+/     = f.text_field :description
+/   .actions = f.submit
+
+  
+.row
+  .col-11.offset-1.mt-3
+    = form_for @footer, :html => {:style => 'background-color:whitesmoke;'} do |f|
+      - if @footer.errors.any?
+        #error_explanation1
+          h2 = "#{pluralize(@footer.errors.count, "error")} prohibited this from being saved:"
+          ul
+            - @footer.errors.full_messages.each do |message|
+              li = message
+      .row.my-5
+        .col-10
+          = f.label :description, "#{t 'description'}"
+          = f.text_area :description,size: "80x10", class: 'form-control mb-3'
+
+      .actions.mt-3.mb-5
+        button.btn.btn-outline-success.px-5.font-weight-bold type= "submit" = t 'add'

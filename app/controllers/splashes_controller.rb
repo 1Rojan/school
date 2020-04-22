@@ -28,7 +28,7 @@ class SplashesController < DashboardsController
 
     respond_to do |format|
       if @splash.save
-        format.html { redirect_to @splash, notice: 'Splash was successfully created.' }
+        format.html { redirect_to @splash, notice: 'सफलतापूर्वक थपियो |' }
         format.json { render :show, status: :created, location: @splash }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SplashesController < DashboardsController
   def update
     respond_to do |format|
       if @splash.update(splash_params)
-        format.html { redirect_to @splash, notice: 'Splash was successfully updated.' }
+        format.html { redirect_to @splash, notice: 'सफलतापूर्वक सम्पादित गरियो |' }
         format.json { render :show, status: :ok, location: @splash }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SplashesController < DashboardsController
   def destroy
     @splash.destroy
     respond_to do |format|
-      format.html { redirect_to splashes_url, notice: 'Splash was successfully destroyed.' }
+      format.html { redirect_to splashes_url, notice: 'सफलतापूर्वक मेटाईयो |' }
       format.json { head :no_content }
     end
   end

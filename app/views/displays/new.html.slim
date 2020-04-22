@@ -8,54 +8,8 @@ section#index
       .carousel-item
         div.mx-auto.mt-0.nnav style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 35vh ; background-size: cover;"
 
-/ = form_for @admission do |f|
-/   - if @admission.errors.any?
-/     #error_explanation
-/       h2 = "#{pluralize(@admission.errors.count, "error")} prohibited this admission from being saved:"
-/       ul
-/         - @admission.errors.full_messages.each do |message|
-/           li = message
-/
-/   .field
-/     = f.label :name
-/     = f.text_field :name
-/   .field
-/     = f.label :dob
-/     = f.date_field :dob
-/   .field
-/     = f.label :gender
-/     = f.text_field :gender
-/   .field
-/     = f.label :address
-/     = f.text_field :address
-/   .field
-/     = f.label :phone
-/     = f.text_field :phone
-/   .field
-/     = f.label :email
-/     = f.text_field :email
-/   .field
-/     = f.label :father_name
-/     = f.text_field :father_name
-/   .field
-/     = f.label :mother_name
-/     = f.text_field :mother_name
-/   .field
-/     = f.label :father_phone
-/     = f.text_field :father_phone
-/   .field
-/     = f.label :mother_phone
-/     = f.text_field :mother_phone
-/   .field
-/     = f.label :admission_for
-/     = f.number_field :admission_for
-/   .field
-/     = f.label :mark_sheet
-/     = f.text_field :mark_sheet
-/   .actions = f.submit
 
-  
-section.wow.zoomIn data-wow-duration="2s"
+section
   h2.text-center.py-3.bg-dark.text-light =t'admission'
   .row.mx-0
     .col-11.mt-3.mx-auto
@@ -63,7 +17,7 @@ section.wow.zoomIn data-wow-duration="2s"
         - if @admission.errors.any?
           #error_explanation
             / h2 = "#{pluralize(@admission.errors.count, "error")} prohibited this from being saved:"
-            ul
+            / ul
               - @admission.errors.full_messages.each do |message|
                 li = message
         .row.mt-5
@@ -74,13 +28,13 @@ section.wow.zoomIn data-wow-duration="2s"
                   = f.label :name, "#{t 'name'}"
 
                 td.p-3
-                  = f.text_field :name,class:'form-control'
+                  = f.text_field :name,class:'form-control' , :required => true
               tr
                 td.p-3
                   = f.label :dob, "#{t 'dob'}"
 
                 td.p-3
-                  = f.date_field :dob,class:'form-control'
+                  = f.date_field :dob,class:'form-control' , :required => true
               tr
                 td.p-3
                   = f.label :gender, "#{t 'gender'}"
@@ -88,19 +42,19 @@ section.wow.zoomIn data-wow-duration="2s"
                 td.p-3
                   / = f.select :admission_for,options_for_select([['Male', 'male'], ['Female', 'Female'], ['Other', 'other']]), id: :gender
                   / = f.select :admission_for,Admission.genders.map{|k| k}, id: :gender
-                  = f.select :gender, Admission.genders.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control'
+                  = f.select :gender, Admission.genders.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control' ,:required => true
               tr
                 td.p-3
                   = f.label :address, "#{t 'address'}"
 
                 td.p-3
-                  = f.text_field :address,class:'form-control'
+                  = f.text_field :address,class:'form-control', :required => true
               tr
                 td.p-3
                   = f.label :phone, "#{t 'phone'}"
 
                 td.p-3
-                  = f.text_field :phone,class:'form-control'
+                  = f.text_field :phone,class:'form-control', :required => true
               tr
                 td.p-3
                   = f.label :email, "#{t 'email'}"
@@ -114,13 +68,13 @@ section.wow.zoomIn data-wow-duration="2s"
                   = f.label :father_name, "#{t 'fatherName'}"
 
                 td.p-3
-                  = f.text_field :father_name,class:'form-control'
+                  = f.text_field :father_name,class:'form-control', :required => true
               tr
                 td.p-3
                   = f.label :mother_name, "#{t 'motherName'}"
 
                 td.p-3
-                  = f.text_field :mother_name,class:'form-control'
+                  = f.text_field :mother_name,class:'form-control', :required => true
               tr
                 td.p-3
                   = f.label :father_phone, "#{t 'fatherPhone'}"
@@ -138,14 +92,14 @@ section.wow.zoomIn data-wow-duration="2s"
                   = f.label :admission_for, "#{t 'admissionFor'}"
 
                 td.p-3
-                  = f.select :admission_for, Admission.admission_fors.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control'
+                  = f.select :admission_for, Admission.admission_fors.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control',:required => true
               tr
                 td.p-3
                   = f.label :mark_sheet, "#{t 'markSheet'}"
 
                 td.p-3
                   = f.hidden_field :image,class:''
-                  = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp'
+                  = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp', :required => true
                   button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn = t 'addImage'
                 td
 
