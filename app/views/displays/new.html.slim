@@ -21,7 +21,7 @@ section
               - @admission.errors.full_messages.each do |message|
                 li = message
         .row.mt-5
-          .col-6.d-flex.justify-content-around
+          .col-md-6
             table.w-75
               tr
                 td.p-3
@@ -61,43 +61,43 @@ section
 
                 td.p-3
                   = f.text_field :email,class:'form-control'
-          .col-6
+          .col-md-6.d-flex.justify-content-around
             table
               tr
                 td.p-3
                   = f.label :father_name, "#{t 'fatherName'}"
 
-                td.p-3
+                td.pr-4.py-3
                   = f.text_field :father_name,class:'form-control', :required => true
               tr
                 td.p-3
                   = f.label :mother_name, "#{t 'motherName'}"
 
-                td.p-3
+                td.pr-4.py-3
                   = f.text_field :mother_name,class:'form-control', :required => true
               tr
                 td.p-3
                   = f.label :father_phone, "#{t 'fatherPhone'}"
 
-                td.p-3
+                td.pr-4.py-3
                   = f.text_field :father_phone,class:'form-control'
               tr
                 td.p-3
                   = f.label :mother_phone, "#{t 'motherPhone'}"
 
-                td.p-3
+                td.pr-4.py-3
                   = f.text_field :mother_phone,class:'form-control'
               tr
                 td.p-3
                   = f.label :admission_for, "#{t 'admissionFor'}"
 
-                td.p-3
+                td.pr-4.py-3
                   = f.select :admission_for, Admission.admission_fors.keys.map {|k| [k.titleize, k]}, {}, class: 'form-control',:required => true
               tr
                 td.p-3
                   = f.label :mark_sheet, "#{t 'markSheet'}"
 
-                td.p-3
+                td.pr-4.py-3
                   = f.hidden_field :image,class:''
                   = f.file_field :image, class: 'my-3 w-100 d-none uploadImg ', id: 'imgInp', :required => true
                   button.btn-md.bg-secondary.text-light.rounded.text-left.imgBtn = t 'addImage'

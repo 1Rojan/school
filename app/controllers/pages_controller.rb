@@ -2,6 +2,8 @@ class PagesController < ApplicationController
 
   def index
     @splashes = Splash.all
-  end
+    @intro = Intro.find_by_name("विगतदेखि वर्तमान सम्म ")
+    @about = @intro.abouts
+   end
 
 end
