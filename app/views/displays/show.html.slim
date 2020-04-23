@@ -14,7 +14,7 @@ section.wow.zoomIn data-wow-duration="2s"
     .row.container-fluid.mt-5
       - @team.each do |member|
         .col-md-4
-          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
+          .card.shadow-lg.mb-5.bg-white.rounded.w-100
             - if member.image.attached?
               div.img-thumbnail style="background: url(#{url_for(member.image)}) no-repeat; height: 200px; background-size: cover;"
             / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
@@ -26,12 +26,12 @@ section.wow.zoomIn data-wow-duration="2s"
     h2.text-center.bg-dark.text-light.py-2.px-0
       =@intro.name
     .row.container-fluid.mt-5
-      .col-4
+      .col-md-4
         -if @about_image.nil? == false
           -if @about_image.image.attached?
             div.img-thumbnail style="background: url(#{url_for(@about_image.image)}) no-repeat; height: 400px; background-size: cover;"
 
-      .col-8
+      .col-md-8.text-justify
         -@intro.abouts.all[0...1].each do |intr|
           = intr.description
 

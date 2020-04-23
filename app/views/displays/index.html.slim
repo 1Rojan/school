@@ -21,7 +21,7 @@ section#index
     h2.text-center.mb-5.bg-dark.text-light.py-2 कार्यक्रम सूचना
     .row.mx-0.my-5
       - @notices.all.each do |information|
-        .col-md-4.mb-5 data-target="#example#{information.id}" data-toggle="modal" type="button"
+        .col-md-4.mb-5
           .card.mb-3 style=("max-width: 540px;")
             .row.no-gutters
               / .col-md-3.bg-secondary
@@ -43,26 +43,20 @@ section#index
                       div style="height=100px"
                         = link_to "view", (information.image), class: 'btn btn-lg btn-outline-secondary'
 
-/! Modal
-/ -if @notices.nil? ==false
-  - @notices.all.each do |information|
-    .modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" id="example#{information.id}"
-      .modal-dialog.modal-dialog-centered role="document"
-        .modal-content
-          .modal-header
-            h5#exampleModalLongTitle.modal-title.text-primary = information.title
-            button.close aria-label="Close" data-dismiss="modal" type="button"
-              span aria-hidden="true"  &times;
-          .modal-body
-            = information.description
-          p.mb-0.ml-3.mt-4
-            small.text-muted
-              |Published : &nbsp;
-            span
-              = information.published
-          .modal-footer
-            button.btn.btn-secondary data-dismiss="modal" type="button"  Close
 
+- if @facilities.nil? == false
+  section.mb-5.wow.zoomIn data-wow-duration="2s"
+    h2.text-center.mb-5.bg-dark.text-light.py-2 विद्यालय सुविधा
+    .row.mx-0.my-5
+      - @facilities.all.each do |facility|
+        .col-md-4.mb-5
+          .card.mb-4.border-0
+            .card-header.font-weight-bold.fa-lg.py-5.text-center.text-light style=('background-color:#192f59 !important;')
+              = facility.name
+            - if facility.image.attached?
+              .card-body.text-success style="background: url(#{url_for(facility.image)}) no-repeat; height: 40vh; background-size: cover;"
+            .card-footer.bg-transparent.text-justify
+              = facility.description
 / section.container-fluid.mt-5.bg-light.px-0
 /   .row.mt-5.mr-0
 /     -if @gallery.nil? == false
@@ -124,3 +118,25 @@ section#index
     /         .card-img-overlay
     /           h5.py-2.card-title.bg-dark
     /             = link_to "#{clien.name}", display_path(clien, client_id: clien.id), class: 'text-decoration-none text-light'
+
+
+
+/! Modal
+/ -if @notices.nil? ==false
+  - @notices.all.each do |information|
+    .modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1" id="example#{information.id}"
+      .modal-dialog.modal-dialog-centered role="document"
+        .modal-content
+          .modal-header
+            h5#exampleModalLongTitle.modal-title.text-primary = information.title
+            button.close aria-label="Close" data-dismiss="modal" type="button"
+              span aria-hidden="true"  &times;
+          .modal-body
+            = information.description
+          p.mb-0.ml-3.mt-4
+            small.text-muted
+              |Published : &nbsp;
+            span
+              = information.published
+          .modal-footer
+            button.btn.btn-secondary data-dismiss="modal" type="button"  Close

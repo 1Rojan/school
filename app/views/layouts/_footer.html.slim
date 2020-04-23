@@ -38,14 +38,9 @@ footer.page-footer.font-small.bg-dark.text-light.mt-5
         /! Links
         h5.font-weight-bold.text-uppercase.my-4 सूचना
         ul.list-unstyled
-          li
-            a href="#!"  लिन्क १
-          li.mt-2
-            a href="#!"  लिन्क २
-          li.mt-2
-            a href="#!"  लिन्क ३
-          li.mt-2
-            a href="#!"  लिन्क ४
+          -Notice.all.reverse[0..3].each do |suchana|
+            li
+              a.text-light.fa-sm.text-decoration-none  href="#!"  = suchana.title
       /! Grid column
       hr.clearfix.w-100.d-md-none
       /! Grid column

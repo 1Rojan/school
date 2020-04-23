@@ -23,6 +23,8 @@ class DisplaysController < ApplicationController
       @gallery = Gallery.all
     elsif params[:index] == "notice"
       @notices = Notice.all
+    elsif params[:index] == "facility"
+      @facilities = Facility.all
     # elsif params[:index] == "completedProjects"
     #   @completedProjects = Project.all.where(status: 1)
     # elsif params[:index] == "clients"
