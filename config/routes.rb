@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   namespace :api do
-
     namespace :v1 do
       resources :facilities, only: :index
       resources :galleries, only: :index
@@ -10,10 +9,6 @@ Rails.application.routes.draw do
       resources :team_categories, only: :index
     end
   end
-
-
-
-
 
 
   resources :footers
