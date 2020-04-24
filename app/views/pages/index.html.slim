@@ -68,11 +68,11 @@ section style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; heig
             = link_to "थप हेर्नुहोस", display_path(@about, about_id: @about.first.id), class: 'text-decoration-none btn btn-outline-light px-5 wow fadeInUp'
 
 
-          //mobile
+            //mobile
           h5.card-text.text-light.text-justify.mt-5.d-block.d-md-none.about.wow.fadeInRight data-wow-duration="2s"
-            / = @about.first.description[0...200] + '...'
+            = @about.first.description[0...200] + '...'
           .col-5.mx-auto.mt-5.d-block.d-md-none
-            / = link_to "थप हेर्नुहोस", display_path(@about, about_id: @about.first.id), class: 'text-decoration-none btn btn-outline-light wow fadeInUp'
+            = link_to "थप हेर्नुहोस", display_path(@about, about_id: @about.first.id), class: 'text-decoration-none btn btn-outline-light wow fadeInUp'
             / button.btn.btn-outline-light.px-5.wow.fadeInUp data-wow-duration="3s" href=""
 
 / About section (mobile view)
@@ -197,6 +197,11 @@ section.my-5.bg-light.wow.zoomIn data-wow-duration="2s"
                     |Published : &nbsp;
                   span
                     = information.published
+                span
+                  - if information.image.attached?
+                    - if ['pdf'].include?(information.image.filename.extension)
+                      div style="height=100px"
+                        = link_to "view", (information.image), class: 'img-thumbnail', style: "height:50px"
 
   .col-5.mx-auto.mb-5.d-block.d-md-none
     = link_to "थप हेर्नुहोस", displays_path(index: 'notice'), class: 'text-decoration-none btn btn-outline-primary wow fadeInUp mb-5'

@@ -40,7 +40,7 @@ footer.page-footer.font-small.bg-dark.text-light.mt-5
         ul.list-unstyled
           -Notice.all.reverse[0..3].each do |suchana|
             li
-              a.text-light.fa-sm.text-decoration-none  href="#!"  = suchana.title
+              a.text-light.fa-sm.text-decoration-none  href="#{displays_path(index:'notice')}"  = suchana.title
       /! Grid column
       hr.clearfix.w-100.d-md-none
       /! Grid column

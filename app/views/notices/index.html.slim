@@ -22,12 +22,15 @@
           td.text-justify = notice.title
           td.text-justify = notice.description
           td.text-justify = notice.published
-          - if notice.image.attached?
-            td
-              div style="height=100px"
-                = link_to "view", (notice.image), class: 'img-thumbnail', style: "height:50px"
-          -else
-            td
+          td
+            - if notice.image.attached?
+              - if ['pdf'].include?(notice.image.filename.extension)
+                div style="height=100px"
+                  = link_to "view", (notice.image), class: 'img-thumbnail', style: "height:50px"
+              - else
+                - if notice.image.attached?
+                  div style="height=100px"
+                    = image_tag (notice.image), class: 'img-thumbnail', style: "height:50px"
           td.pr-0
             = link_to notice
               i.fas.fa-eye.text-info.mr-1.ml-0
