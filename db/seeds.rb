@@ -275,18 +275,43 @@ intros = ['प्रधानाध्यापककाे सन्देश',
 end
 
 
-intros = ['प्रधानाध्यापककाे सन्देश', 'विगतदेखि वर्तमान सम्म']
-  intros.each do |intro|
-  about = About.create(
-    title: 'विगतदेखि वर्तमान सम्म',
-    description: 'तत्कालीन ग्रामविकास मन्त्री प्रेमप्रसाद आङ्दम्बेज्यूबाट २०१७ साल वैशाख १६ गते यस विद्यालयको शिलान्यास भए तापनि ०१८ चैत १७ गतेदेखि पठनपाठन आरम्भ भएको थियो ।
-                 तत्कालीन ग्रामविकास मन्त्री प्रेमप्रसाद आङ्दम्बेज्यूबाट २०१७ साल वैशाख १६ गते यस विद्यालयको शिलान्यास भए तापनि ०१८ चैत १७ गतेदेखि पठनपाठन आरम्भ भएको थियो ।
-                तत्कालीन ग्रामविकास मन्त्री प्रेमप्रसाद आङ्दम्बेज्यूबाट २०१७ साल वैशाख १६ गते यस विद्यालयको शिलान्यास भए तापनि ०१८ चैत १७ गतेदेखि पठनपाठन आरम्भ भएको थियो ।',
-    intro_id: Intro.find_by_name(intro).id
-    )
-    if about.persisted?
-      puts "about created"
-    else
-      about.errors.messages
-    end
-end
+admission = Admission.create(
+    name: 'ram',
+    dob: Date.today,
+    gender: 1,
+    address: 'palpa',
+    phone: '7777777',
+    email: 'ram@gmail.com',
+    father_name: 'shyam',
+    father_phone: '9999999999',
+    mother_name: 'sita',
+    mother_phone: '9999999999',
+    admission_for: 'कक्षा_१०'
+)
+
+  if admission.persisted?
+    puts 'admission created'
+  else
+    puts admission.errors.messages
+  end
+  io_files1 = team_images.sample(1)
+
+  io_files1[0...1].each do |f|
+
+    image = File.open(f)
+
+    admission.image.attach io: image, filename: f.split('/').last
+
+    image.close
+  end
+
+
+footers = Footer.create(
+          description:'तत्कालीन ग्रामविकास मन्त्री प्रेमप्रसाद आङ्दम्बेज्यूबाट २०१७ साल वैशाख १६ गते यस विद्यालयको शिलान्यास भए तापनि ०१८ चैत १७
+           गतेदेखि पठनपाठन आरम्भ भएको थियो ।'
+)
+  if footers.persisted?
+    puts 'footer created'
+  else
+    puts footers.errors.messages
+  end
