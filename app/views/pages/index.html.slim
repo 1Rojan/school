@@ -63,9 +63,9 @@ section style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; heig
 
         .col-md-9
           h5.card-text.text-light.text-justify.mt-5.d-none.d-md-block.about.wow.fadeInRight data-wow-duration="2s"
-            / = @about.first.description[0...600] + '...'
+            = @about.first.description[0...600] + '...'
           .col-4.offset-8.mt-5.d-none.d-md-block
-            / = link_to "थप हेर्नुहोस", display_path(@about, about_id: @about.first.id), class: 'text-decoration-none btn btn-outline-light px-5 wow fadeInUp'
+            = link_to "थप हेर्नुहोस", display_path(@about, about_id: @about.first.id), class: 'text-decoration-none btn btn-outline-light px-5 wow fadeInUp'
 
 
           //mobile
