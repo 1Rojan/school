@@ -2,11 +2,15 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :facilities, only: :index
-      resources :galleries, only: :index
-      resources :notices, only: :index
-      resources :teams, only: :index
-      resources :team_categories, only: :index
+      resources :facilities, only: [:index, :show]
+      resources :galleries, only: [:index, :show]
+      resources :notices, only: [:index, :show]
+      resources :teams, only: [:index, :show]
+      resources :team_categories, only: [:index, :show]
+      resources :intro, only: [:index, :show]
+      resources :about, only: [:index, :show]
+      resources :admissions, only: [:index, :show]
+      resources :footers, only: [:index, :show]
     end
   end
 
