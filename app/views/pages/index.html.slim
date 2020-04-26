@@ -33,21 +33,18 @@ section.d-block.d-md-none
             .card.text-white.bg-dark.mb-3.ml-1 style=("max-width: 11rem;max-height: 11rem;opacity:0.8;")
               .card-body
                 h2.card-title style=("font-size: 1.7rem;") श्री दिव्य ज्योति नमूना  माध्यमिक  विद्यालय
-                / p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
       .carousel-item
         div.mx-auto.mt-0.nnav.border style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 100vw; background-size: cover;"
           .card-img-overlay.d-flex.align-items-center
             .card.text-white.bg-dark.mb-3.ml-1 style=("max-width: 11rem;max-height: 11rem;opacity:0.8;")
               .card-body
                 h2.card-title style=("font-size: 1.7rem;") श्री दिव्य ज्योति नमूना  माध्यमिक  विद्यालय
-                / p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
       .carousel-item
         div.mx-auto.mt-0.nnav.border style="background: url(#{asset_path('indeximage1.jpg')}) no-repeat; height: 100vw; background-size: cover;"
           .card-img-overlay.d-flex.align-items-center
             .card.text-white.bg-dark.mb-3.ml-1 style=("max-width: 11rem;max-height: 11rem;opacity:0.8;")
               .card-body
                 h2.card-title style=("font-size: 1.7rem;") श्री दिव्य ज्योति नमूना  माध्यमिक  विद्यालय
-                / p.card-text “The only person who is educated is the one who has learned how to learn …and change.”
 
 
 
@@ -183,9 +180,6 @@ section.my-5.bg-light.wow.zoomIn data-wow-duration="2s"
       .col-md-4.mb-5
         .card.mb-3 style=("max-width: 540px;")
           .row.no-gutters
-            / .col-md-3.bg-secondary
-            /   h4.mt-5.text-light.text-center
-            /     = information.published
             .col-md-12
               .card-body.pr-1.pl-2
                 h6.card-title.font-weight-bold.text-primary.border-bottom
@@ -256,15 +250,9 @@ section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
       ul.d-flex.justify-content-center.pb-2#myTab.nav.nav-tabs.removetopborder role="tablist"
         li.nav-item.mx-1.rounded
           a#home-tab.nav-link.active.bg-light.text-dark aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" = TeamCategory.first.name
-        li.nav-item.mx-1
-          a#profile-tab.nav-link.bg-light.text-dark aria-controls="profile" aria-selected="false" data-toggle="tab" href="#profile" role="tab" = TeamCategory.second.name
-        li.nav-item.mx-1
-          a#contact-tab.nav-link.bg-light.text-dark aria-controls="contact" aria-selected="false" data-toggle="tab" href="#contact" role="tab" = TeamCategory.third.name
-        li.nav-item.mx-1
-          a#contact1-tab.nav-link.bg-light.text-dark aria-controls="contact1" aria-selected="false" data-toggle="tab" href="#contact1" role="tab" = TeamCategory.fourth.name
-        - if TeamCategory.fifth.nil? == false
+        -TeamCategory.all[1..-1].each do |category|
           li.nav-item.mx-1
-            a#contact2-tab.nav-link.bg-light.text-dark aria-controls="contact2" aria-selected="false" data-toggle="tab" href="#contact2" role="tab" = TeamCategory.fifth.name
+            a#profile-tab.nav-link.bg-light.text-dark aria-controls="profile" aria-selected="false" data-toggle="tab" href="#category#{category.id}" role="tab" = category.name
       #myTabContent.tab-content
         #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
           #carouselExampleControls1.carousel.slide data-ride="carousel"
@@ -275,260 +263,41 @@ section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
                     .col-3.d-flex.justify-content-around
                       .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
                         div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                        / img.card-img-top alt="..." src="..." /
                         .card-body
                           h5.text-center.card-title.mb-1
                             = team.name
                           p.text-center.mb-1
                             strong
                               = team.designation
-                          / p.card-text.bg-light.py-2.px-0.text-justify
-                            = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-              -if TeamCategory.first.team[4...8].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.first.team[4...8].each do |team|
+              / -if TeamCategory.first.team[4...8].nil? == false
+              .carousel-item
+                .row
+                  - TeamCategory.first.team[4..-1].each_slice(4) do |category|
+                    -category.each do |team|
                       .col-3.d-flex.justify-content-around
                         .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
                           div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
                           .card-body
                             h5.text-center.card-title.mb-1
                               = team.name
                             p.text-center.mb-1
                               strong
                                 = team.designation
-                            / p.card-text.bg-light.py-2.px-0.text-justify
-                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              -if TeamCategory.first.team[8...12].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.first.team[8...12].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                            / p.card-text.bg-light.py-2.px-0.text-justify
-                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
             a.carousel-control-prev data-slide="prev" href="#carouselExampleControls1" role="button" style="width:36px;"
               span.carousel-control-prev-icon.bg-dark aria-hidden="true"
               span.sr-only Previous
             a.carousel-control-next data-slide="next" href="#carouselExampleControls1" role="button"style="width:36px;"
               span.carousel-control-next-icon.bg-dark aria-hidden="true"
               span.sr-only Next
-        #profile.tab-pane.fade aria-labelledby="profile-tab" role="tabpanel"
-          #carouselExampleControls2.carousel.slide data-ride="carousel"
-            .carousel-inner
-              .carousel-item.active
-                .row
-                  - TeamCategory.second.team[0...4].each do |team|
-                    .col-3.d-flex.justify-content-around
-                      .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                        div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                        / img.card-img-top alt="..." src="..." /
-                        .card-body
-                          h5.text-center.card-title.mb-1
-                            = team.name
-                          p.text-center.mb-1
-                            strong
-                              = team.designation
-                          / p.card-text.bg-light.py-2.px-0.text-justify
-                            = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                            / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              -if TeamCategory.second.team[4...8].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.second.team[4...8].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                            / p.card-text.bg-light.py-2.px-0.text-justify
-                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              -if TeamCategory.second.team[8...12].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.second.team[8...12].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                            / p.card-text.bg-light.py-2.px-0.text-justify
-                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls2" role="button" style="width:36px;"
-              span.carousel-control-prev-icon.bg-dark aria-hidden="true"
-              span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleControls2" role="button" style="width:36px;"
-              span.carousel-control-next-icon.bg-dark aria-hidden="true"
-              span.sr-only Next
-        #contact.tab-pane.fade aria-labelledby="contact-tab" role="tabpanel"
-          #carouselExampleControls3.carousel.slide data-ride="carousel"
-            .carousel-inner
-              .carousel-item.active
-                .row
-                  - TeamCategory.third.team[0...4].each do |team|
-                    .col-3.d-flex.justify-content-around
-                      .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                        div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                        / img.card-img-top alt="..." src="..." /
-                        .card-body
-                          h5.text-center.card-title.mb-1
-                            = team.name
-                          p.text-center.mb-1
-                            strong
-                              = team.designation
-                          / p.card-text.bg-light.py-2.px-0.text-justify
-                            = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                            / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              -if TeamCategory.third.team[4...8].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.third.team[4...8].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                            / p.card-text.bg-light.py-2.px-0.text-justify
-                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              -if TeamCategory.third.team[8...12].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.third.team[8...12].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                            / p.card-text.bg-light.py-2.px-0.text-justify
-                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls3" role="button" style="width:36px;"
-              span.carousel-control-prev-icon.bg-dark aria-hidden="true"
-              span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleControls3" role="button" style="width:36px;"
-              span.carousel-control-next-icon.bg-dark aria-hidden="true"
-              span.sr-only Next
 
-
-        #contact1.tab-pane.fade aria-labelledby="contact1-tab" role="tabpanel"
-          #carouselExampleControls4.carousel.slide data-ride="carousel"
-            .carousel-inner
-              .carousel-item.active
-                .row
-                  - TeamCategory.fourth.team[0...4].each do |team|
-                    .col-3.d-flex.justify-content-around
-                      .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                        div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                        / img.card-img-top alt="..." src="..." /
-                        .card-body
-                          h5.text-center.card-title.mb-1
-                            = team.name
-                          p.text-center.mb-1
-                            strong
-                              = team.designation
-                              / p.card-text.bg-light.py-2.px-0.text-justify
-                                  = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                                  / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              - if TeamCategory.fourth.team[4...8].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.fourth.team[4...8].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                                / p.card-text.bg-light.py-2.px-0.text-justify
-                                    = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                                    / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-              - if TeamCategory.fourth.team[8...12].nil? == false
-                .carousel-item
-                  .row
-                    - TeamCategory.fourth.team[8...12].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                                / p.card-text.bg-light.py-2.px-0.text-justify
-                                    = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                                    / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls4" role="button" style="width:36px;"
-              span.carousel-control-prev-icon.bg-dark aria-hidden="true"
-              span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleControls4" role="button" style="width:36px;"
-              span.carousel-control-next-icon.bg-dark aria-hidden="true"
-              span.sr-only Next
-
-
-        #contact2.tab-pane.fade aria-labelledby="contact2-tab" role="tabpanel"
-          #carouselExampleControls5.carousel.slide data-ride="carousel"
-            -if TeamCategory.fifth.nil? == false
+        -TeamCategory.all[1..-1].each do |category|
+          .tab-pane.fade aria-labelledby="profile-tab" id="category#{category.id}" role="tabpanel"
+            .carousel.slide id="carouselExampleControls#{category.id}" data-ride="carousel"
               .carousel-inner
                 .carousel-item.active
                   .row
-                    - TeamCategory.fifth.team[0...4].each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          / img.card-img-top alt="..." src="..." /
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-                                / p.card-text.bg-light.py-2.px-0.text-justify
-                                            = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                                            / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-                - if TeamCategory.fifth.team[4...8].nil? == false
-                  .carousel-item
-                    .row
-                      - TeamCategory.fifth.team[4...8].each do |team|
+                    -if category.team[0...4].nil? == false
+                      - category.team[0...4].each do |team|
                         .col-3.d-flex.justify-content-around
                           .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
                             div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
@@ -539,67 +308,27 @@ section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
                               p.text-center.mb-1
                                 strong
                                   = team.designation
-                                  / p.card-text.bg-light.py-2.px-0.text-justify
-                                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-                - if TeamCategory.fifth.team[8...12].nil? == false
-                  .carousel-item
-                    .row
-                      - TeamCategory.fifth.team[8...12].each do |team|
-                        .col-3.d-flex.justify-content-around
-                          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                            div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                            / img.card-img-top alt="..." src="..." /
-                            .card-body
-                              h5.text-center.card-title.mb-1
-                                = team.name
-                              p.text-center.mb-1
-                                strong
-                                  = team.designation
-                                  / p.card-text.bg-light.py-2.px-0.text-justify
-                                              = link_to "#{team.achievement[0...200] + '...'}", display_path(team, team_id: team.id), class: 'text-decoration-none'
-                                              / = link_to "#{team.achievement}", {:controller => "display", :action => "index", :team_id => team.id}, class: 'text-decoration-none'
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls5" role="button" style="width:36px;"
+                .carousel-item
+                  .row
+                    -if category.team[4...-1].nil? == false
+                      - category.team[4..-1].each_slice(4) do |teams|
+                        -teams.each do |team|
+                          .col-3.d-flex.justify-content-around
+                            .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+                              div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+                              / img.card-img-top alt="..." src="..." /
+                              .card-body
+                                h5.text-center.card-title.mb-1
+                                  = team.name
+                                p.text-center.mb-1
+                                  strong
+                                    = team.designation
+            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{category.id}" role="button" style="width:36px;"
               span.carousel-control-prev-icon.bg-dark aria-hidden="true"
               span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleControls5" role="button" style="width:36px;"
+            a.carousel-control-next data-slide="next" href="#carouselExampleControls#{category.id}" role="button" style="width:36px;"
               span.carousel-control-next-icon.bg-dark aria-hidden="true"
               span.sr-only Next
-
-
-
-/ section.container-fluid.mt-5.pt-4.wow.zoomIn data-wow-duration="2s"
-  h1.my-5.text-center.pt-4font-weight-bold
-    = TeamCategory.first.name
-  #carouselExampleControls.carousel.slide.d-none.d-md-block data-ride="carousel"
-    .carousel-inner
-      .carousel-item.active
-        .col-12.d-none.d-flex.justify-content-around
-          - TeamCategory.first.team[0..2].each do |member|
-            .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-              -if member.image.attached?
-                div.img-thumbnail style="background: url(#{url_for(member.image)}) no-repeat; height: 250px; background-size: cover;"
-              / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-              .card-body.bg-light.border
-                h4.card-text.text-danger.text-center  =member.name
-                p.card-text.text-dark.text-justify.text-center  =member.designation
-      - TeamCategory.first.team.all.each_slice(3) do |member|
-        .carousel-item
-          .col-12.d-flex.justify-content-around
-            -member.each do |mem|
-              .card.shadow-lg.mb-5.bg-white.rounded style=("width: 23rem;")
-                - if mem.image.attached?
-                  div.img-thumbnail style="background: url(#{url_for(mem.image)}) no-repeat; height: 250px; background-size: cover;"
-                / img.card-img-top alt=("Card image cap") src=(".../100px180/?text=Image cap") /
-                .card-body.bg-light.border
-                  h4.card-text.text-danger.text-center = mem.name
-                  p.card-text.text-dark.text-justify.text-center = mem.designation
-    a.carousel-control-prev.mt-5 data-slide="prev" href="#carouselExampleControls" role="button" style="width:50px;"
-      span.carousel-control-prev-icon.bg-dark aria-hidden="true"
-      span.sr-only Previous
-    a.carousel-control-next data-slide="next" href="#carouselExampleControls" role="button" style="width:50px;"
-      span.carousel-control-next-icon.bg-dark aria-hidden="true"
-      span.sr-only Next
 
     /team section  (mobile view)
 
@@ -609,12 +338,9 @@ section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
     ul.d-flex.justify-content-center.pb-2#myTab1.nav.nav-tabs.removetopborder role="tablist"
       li.nav-item.mx-1.rounded
         a#home-tab1.nav-link.active.bg-light.text-dark.mb-1 aria-controls="home" aria-selected="true" data-toggle="tab" href="#home1" role="tab" = TeamCategory.first.name
-      li.nav-item.mx-1
-        a#profile-tab1.nav-link.bg-light.text-dark.mb-1 aria-controls="profile" aria-selected="false" data-toggle="tab" href="#profile1" role="tab" = TeamCategory.second.name
-      li.nav-item.mx-1
-        a#contact-tab1.nav-link.bg-light.text-dark.mb-1 aria-controls="contact1" aria-selected="false" data-toggle="tab" href="#contact11" role="tab" = TeamCategory.third.name
-      li.nav-item.mx-1
-        a#contact-tab2.nav-link.bg-light.text-dark.mb-1 aria-controls="contact2" aria-selected="false" data-toggle="tab" href="#contact22" role="tab" = TeamCategory.fourth.name
+      -TeamCategory.all[1..-1].each do |category|
+        li.nav-item.mx-1
+          a#profile-tab1.nav-link.bg-light.text-dark.mb-1 aria-controls="profile" aria-selected="false" data-toggle="tab" href="#category1#{category.id}" role="tab" = category.name
     #myTabContent1.tab-content
       #home1.tab-pane.fade.show.active aria-labelledby="home-tab1" role="tabpanel"
         .row
@@ -629,46 +355,20 @@ section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
                     p.text-center.mb-1
                       strong
                         = team.designation
-      #profile1.tab-pane.fade aria-labelledby="profile-tab1" role="tabpanel"
-        .row
-          - TeamCategory.second.team.all.each do |team|
-            .col-12.d-flex.justify-content-around
-              .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                / img.card-img-top alt="..." src="..." /
-                .card-body
-                  h5.text-center.card-title.mb-1
-                    = team.name
-                    p.text-center.mb-1
-                      strong
-                        = team.designation
-      #contact11.tab-pane.fade aria-labelledby="contact-tab1" role="tabpanel"
-        .row
-          - TeamCategory.third.team.all.each do |team|
-            .col-12.d-flex.justify-content-around
-              .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                / img.card-img-top alt="..." src="..." /
-                .card-body
-                  h5.text-center.card-title.mb-1
-                    = team.name
-                    p.text-center.mb-1
-                      strong
-                        = team.designation
-
-      #contact22.tab-pane.fade aria-labelledby="contact-tab2" role="tabpanel"
-        .row
-          - TeamCategory.fourth.team.all.each do |team|
-            .col-12.d-flex.justify-content-around
-              .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                / img.card-img-top alt="..." src="..." /
-                .card-body
-                  h5.text-center.card-title.mb-1
-                    = team.name
-                    p.text-center.mb-1
-                      strong
-                        = team.designation
+      -TeamCategory.all[1..-1].each do |category|
+        .tab-pane.fade aria-labelledby="profile-tab1" id="category1#{category.id}" role="tabpanel"
+          .row
+            - category.team.all.each do |team|
+              .col-12.d-flex.justify-content-around
+                .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+                  div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+                  / img.card-img-top alt="..." src="..." /
+                  .card-body
+                    h5.text-center.card-title.mb-1
+                      = team.name
+                      p.text-center.mb-1
+                        strong
+                          = team.designation
 
 
 section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-duration="2s"
