@@ -38,27 +38,10 @@ section.wow.zoomIn data-wow-duration="2s"
   - if @about.nil? == false
     h2.text-center.bg-dark.text-light.py-2.px-0
       = @about.title
-    .col-11.mt-5.mx-auto
-      =@about.description
-        / .col-md-4
-        /   / =image_tag(@team.image)
-        /   div.mx-auto.mt-0 style="background: url(#{url_for(@team.image)}) no-repeat;height:400px"
-        / .col-md-6.container-fluid
-        /   h3.font-weight-bold.mb-0.d-none.d-md-block
-        /   h3.text-center.font-weight-bold.mb-0.d-block.d-md-none
-        /     =@team.name
-        /   strong.text-secondary.d-none.d-md-block
-        /   strong.text-center.text-secondary.d-block.d-md-none
-        /     =@team.position
-        /   p.text-justify.mt-4
-        /     =@team.achievement
-    / -if @project.nil? == false
-      -@project.image
-      h2.text-center
-        =@project.name
-      p.text-justify
-        =@project.location
-      p.text-justify
-        =@project.owner
-      p.text-justify
-        =@project.description
+    .row
+      .col-md-5.my-3
+        - if @about.image.nil? == false
+          - if @about.image.attached?
+            div.img-thumbnail style="background: url(#{url_for(@about.image)}) no-repeat; height: 400px; background-size: cover;"
+      .col-md-7.mt-3
+        =@about.description
