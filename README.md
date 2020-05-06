@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+API
+
+get request api
+
+* Facility   /api/v1/facilities
