@@ -15,7 +15,6 @@ section#index
       - @gallery.all.each do |photo|
         -if photo.image.attached?
           .col-md-4.border.mx-auto.mt-3 style="background: url(#{url_for(photo.image)}) no-repeat; height: 40vh; background-size: cover;"
-
 -if @notices.nil? == false
   section.mb-5.wow.zoomIn data-wow-duration="2s"
     h2.text-center.mb-5.bg-dark.text-light.py-2 कार्यक्रम सूचना
