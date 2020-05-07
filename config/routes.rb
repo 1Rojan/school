@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :about, only: [:index, :show]
       resources :admissions, only: [:index, :show]
       resources :footers, only: [:index, :show]
+      resources :splashes, only: [:index, :show]
+      post :admissions, to: 'admissions#create'
     end
   end
 

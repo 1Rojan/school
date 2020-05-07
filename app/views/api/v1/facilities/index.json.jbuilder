@@ -1,7 +1,8 @@
-json.array! @facilities do |device|
-  json.name device.name
-  json.description device.description
-  if device.image.attached?
-    json.image url_for device.image
+json.array! @facilities do |facility|
+  json.id facility.id
+  json.name facility.name
+  json.description facility.description
+  if facility.image.attached?
+    json.image url_for facility.image
   end
 end
