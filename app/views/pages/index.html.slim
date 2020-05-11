@@ -241,134 +241,134 @@ section.my-5.d-none.d-md-block.wow.zoomIn data-wow-duration="2s"
 
 
 
-  /team section (Desktop view)
-
-section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
-  h2.text-center.text-dark.pb-3.pt-4.mb-0.font-weight-bolder#teams  विद्यालय परिवार
-  .row.mt-3.d-none.d-md-block
-    .col-12
-      ul.d-flex.justify-content-center.pb-2#myTab.nav.nav-tabs.removetopborder role="tablist"
-        li.nav-item.mx-1.rounded
-          a#home-tab.nav-link.active.bg-light.text-dark aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" = TeamCategory.first.name
-        -TeamCategory.all[1..-1].each do |category|
-          li.nav-item.mx-1
-            a#profile-tab.nav-link.bg-light.text-dark aria-controls="profile" aria-selected="false" data-toggle="tab" href="#category#{category.id}" role="tab" = category.name
-      #myTabContent.tab-content
-        #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
-          #carouselExampleControls1.carousel.slide data-ride="carousel"
-            .carousel-inner
-              .carousel-item.active
-                .row
-                  - TeamCategory.first.team[0...4].each do |team|
-                    .col-3.d-flex.justify-content-around
-                      .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                        div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                        .card-body
-                          h5.text-center.card-title.mb-1
-                            = team.name
-                          p.text-center.mb-1
-                            strong
-                              = team.designation
-              / -if TeamCategory.first.team[4...8].nil? == false
-              .carousel-item
-                .row
-                  - TeamCategory.first.team[4..-1].each_slice(4) do |category|
-                    -category.each do |team|
-                      .col-3.d-flex.justify-content-around
-                        .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                          div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                          .card-body
-                            h5.text-center.card-title.mb-1
-                              = team.name
-                            p.text-center.mb-1
-                              strong
-                                = team.designation
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls1" role="button" style="width:36px;"
-              span.carousel-control-prev-icon.bg-dark aria-hidden="true"
-              span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleControls1" role="button"style="width:36px;"
-              span.carousel-control-next-icon.bg-dark aria-hidden="true"
-              span.sr-only Next
-
-        -TeamCategory.all[1..-1].each do |category|
-          .tab-pane.fade aria-labelledby="profile-tab" id="category#{category.id}" role="tabpanel"
-            .carousel.slide id="carouselExampleControls#{category.id}" data-ride="carousel"
-              .carousel-inner
-                .carousel-item.active
-                  .row
-                    -if category.team[0...4].nil? == false
-                      - category.team[0...4].each do |team|
-                        .col-3.d-flex.justify-content-around
-                          .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                            div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                            / img.card-img-top alt="..." src="..." /
-                            .card-body
-                              h5.text-center.card-title.mb-1
-                                = team.name
-                              p.text-center.mb-1
-                                strong
-                                  = team.designation
-                .carousel-item
-                  .row
-                    -if category.team[4...-1].nil? == false
-                      - category.team[4..-1].each_slice(4) do |teams|
-                        -teams.each do |team|
-                          .col-3.d-flex.justify-content-around
-                            .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                              div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                              / img.card-img-top alt="..." src="..." /
-                              .card-body
-                                h5.text-center.card-title.mb-1
-                                  = team.name
-                                p.text-center.mb-1
-                                  strong
-                                    = team.designation
-            a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{category.id}" role="button" style="width:36px;"
-              span.carousel-control-prev-icon.bg-dark aria-hidden="true"
-              span.sr-only Previous
-            a.carousel-control-next data-slide="next" href="#carouselExampleControls#{category.id}" role="button" style="width:36px;"
-              span.carousel-control-next-icon.bg-dark aria-hidden="true"
-              span.sr-only Next
-
-    /team section  (mobile view)
-
-    // mobile view team
-.row.mt-3.d-block.d-md-none
-  .col-12
-    ul.d-flex.justify-content-center.pb-2#myTab1.nav.nav-tabs.removetopborder role="tablist"
-      li.nav-item.mx-1.rounded
-        a#home-tab1.nav-link.active.bg-light.text-dark.mb-1 aria-controls="home" aria-selected="true" data-toggle="tab" href="#home1" role="tab" = TeamCategory.first.name
-      -TeamCategory.all[1..-1].each do |category|
-        li.nav-item.mx-1
-          a#profile-tab1.nav-link.bg-light.text-dark.mb-1 aria-controls="profile" aria-selected="false" data-toggle="tab" href="#category1#{category.id}" role="tab" = category.name
-    #myTabContent1.tab-content
-      #home1.tab-pane.fade.show.active aria-labelledby="home-tab1" role="tabpanel"
-        .row
-          - TeamCategory.first.team.all.each do |team|
-            .col-12.d-flex.justify-content-around
-              .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                / img.card-img-top alt="..." src="..." /
-                .card-body
-                  h5.text-center.card-title.mb-1
-                    = team.name
-                    p.text-center.mb-1
-                      strong
-                        = team.designation
-      -TeamCategory.all[1..-1].each do |category|
-        .tab-pane.fade aria-labelledby="profile-tab1" id="category1#{category.id}" role="tabpanel"
-          .row
-            - category.team.all.each do |team|
-              .col-12.d-flex.justify-content-around
-                .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
-                  div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
-                  / img.card-img-top alt="..." src="..." /
-                  .card-body
-                    h5.text-center.card-title.mb-1
-                      = team.name
-                      p.text-center.mb-1
-                        strong
-                          = team.designation
+/   /team section (Desktop view)
+/
+/ section#overlay.container-fluid.bckimg.wow.zoomIn data-wow-duration="2s"
+/   h2.text-center.text-dark.pb-3.pt-4.mb-0.font-weight-bolder#teams  विद्यालय परिवार
+/   .row.mt-3.d-none.d-md-block
+/     .col-12
+/       ul.d-flex.justify-content-center.pb-2#myTab.nav.nav-tabs.removetopborder role="tablist"
+/         li.nav-item.mx-1.rounded
+/           a#home-tab.nav-link.active.bg-light.text-dark aria-controls="home" aria-selected="true" data-toggle="tab" href="#home" role="tab" = TeamCategory.first.name
+/         -TeamCategory.all[1..-1].each do |category|
+/           li.nav-item.mx-1
+/             a#profile-tab.nav-link.bg-light.text-dark aria-controls="profile" aria-selected="false" data-toggle="tab" href="#category#{category.id}" role="tab" = category.name
+/       #myTabContent.tab-content
+/         #home.tab-pane.fade.show.active aria-labelledby="home-tab" role="tabpanel"
+/           #carouselExampleControls1.carousel.slide data-ride="carousel"
+/             .carousel-inner
+/               .carousel-item.active
+/                 .row
+/                   - TeamCategory.first.team[0...4].each do |team|
+/                     .col-3.d-flex.justify-content-around
+/                       .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+/                         div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+/                         .card-body
+/                           h5.text-center.card-title.mb-1
+/                             = team.name
+/                           p.text-center.mb-1
+/                             strong
+/                               = team.designation
+/               / -if TeamCategory.first.team[4...8].nil? == false
+/               .carousel-item
+/                 .row
+/                   - TeamCategory.first.team[4..-1].each_slice(4) do |category|
+/                     -category.each do |team|
+/                       .col-3.d-flex.justify-content-around
+/                         .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+/                           div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+/                           .card-body
+/                             h5.text-center.card-title.mb-1
+/                               = team.name
+/                             p.text-center.mb-1
+/                               strong
+/                                 = team.designation
+/             a.carousel-control-prev data-slide="prev" href="#carouselExampleControls1" role="button" style="width:36px;"
+/               span.carousel-control-prev-icon.bg-dark aria-hidden="true"
+/               span.sr-only Previous
+/             a.carousel-control-next data-slide="next" href="#carouselExampleControls1" role="button"style="width:36px;"
+/               span.carousel-control-next-icon.bg-dark aria-hidden="true"
+/               span.sr-only Next
+/
+/         -TeamCategory.all[1..-1].each do |category|
+/           .tab-pane.fade aria-labelledby="profile-tab" id="category#{category.id}" role="tabpanel"
+/             .carousel.slide id="carouselExampleControls#{category.id}" data-ride="carousel"
+/               .carousel-inner
+/                 .carousel-item.active
+/                   .row
+/                     -if category.team[0...4].nil? == false
+/                       - category.team[0...4].each do |team|
+/                         .col-3.d-flex.justify-content-around
+/                           .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+/                             div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+/                             / img.card-img-top alt="..." src="..." /
+/                             .card-body
+/                               h5.text-center.card-title.mb-1
+/                                 = team.name
+/                               p.text-center.mb-1
+/                                 strong
+/                                   = team.designation
+/                 .carousel-item
+/                   .row
+/                     -if category.team[4...-1].nil? == false
+/                       - category.team[4..-1].each_slice(4) do |teams|
+/                         -teams.each do |team|
+/                           .col-3.d-flex.justify-content-around
+/                             .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+/                               div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+/                               / img.card-img-top alt="..." src="..." /
+/                               .card-body
+/                                 h5.text-center.card-title.mb-1
+/                                   = team.name
+/                                 p.text-center.mb-1
+/                                   strong
+/                                     = team.designation
+/             a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{category.id}" role="button" style="width:36px;"
+/               span.carousel-control-prev-icon.bg-dark aria-hidden="true"
+/               span.sr-only Previous
+/             a.carousel-control-next data-slide="next" href="#carouselExampleControls#{category.id}" role="button" style="width:36px;"
+/               span.carousel-control-next-icon.bg-dark aria-hidden="true"
+/               span.sr-only Next
+/
+/     /team section  (mobile view)
+/
+/     // mobile view team
+/ .row.mt-3.d-block.d-md-none
+/   .col-12
+/     ul.d-flex.justify-content-center.pb-2#myTab1.nav.nav-tabs.removetopborder role="tablist"
+/       li.nav-item.mx-1.rounded
+/         a#home-tab1.nav-link.active.bg-light.text-dark.mb-1 aria-controls="home" aria-selected="true" data-toggle="tab" href="#home1" role="tab" = TeamCategory.first.name
+/       -TeamCategory.all[1..-1].each do |category|
+/         li.nav-item.mx-1
+/           a#profile-tab1.nav-link.bg-light.text-dark.mb-1 aria-controls="profile" aria-selected="false" data-toggle="tab" href="#category1#{category.id}" role="tab" = category.name
+/     #myTabContent1.tab-content
+/       #home1.tab-pane.fade.show.active aria-labelledby="home-tab1" role="tabpanel"
+/         .row
+/           - TeamCategory.first.team.all.each do |team|
+/             .col-12.d-flex.justify-content-around
+/               .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+/                 div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+/                 / img.card-img-top alt="..." src="..." /
+/                 .card-body
+/                   h5.text-center.card-title.mb-1
+/                     = team.name
+/                     p.text-center.mb-1
+/                       strong
+/                         = team.designation
+/       -TeamCategory.all[1..-1].each do |category|
+/         .tab-pane.fade aria-labelledby="profile-tab1" id="category1#{category.id}" role="tabpanel"
+/           .row
+/             - category.team.all.each do |team|
+/               .col-12.d-flex.justify-content-around
+/                 .card.shadow-lg.mb-5.bg-white.rounded style=("width: 18rem;")
+/                   div.mx-auto.img-thumbnail.w-100 style="background: url(#{url_for(team.image)}) no-repeat;height:250px; background-size: cover; background-position:center;"
+/                   / img.card-img-top alt="..." src="..." /
+/                   .card-body
+/                     h5.text-center.card-title.mb-1
+/                       = team.name
+/                       p.text-center.mb-1
+/                         strong
+/                           = team.designation
 
 
 section.container-fluid.mt-5.whitegradient#contact_us.wow.bounceInUp data-wow-duration="2s"
