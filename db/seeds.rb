@@ -9,6 +9,7 @@
 facilitiesImage = Dir[Rails.root.join('app/assets/images/facilities', '*.*')]
 team_images = Dir[Rails.root.join('app/assets/images/team', '*.*')]
 gallery_images = Dir[Rails.root.join('app/assets/images/gallery', '*.*')]
+logo_image = Dir[Rails.root.join('app/assets/images/logo', '*.*')]
 
    # introCategory
 intros = ['प्रधानाध्यापककाे सन्देश', 'विगतदेखि वर्तमान सम्म']
@@ -273,6 +274,32 @@ intros = ['प्रधानाध्यापककाे सन्देश',
       about.errors.messages
     end
 end
+
+    #info
+info = Info.create(
+  school_name: "Divya Jyoti",
+  school_intro: Intro.find_by_name("विगतदेखि वर्तमान सम्म").abouts.first.description,
+  school_location: " माथागढी - ३, साराई, पाल्पा",
+  contact: "075420007",
+  email: "divyajyotihsspalpa@gmail.com"
+)
+  if info.persisted?
+    puts "info created"
+  else
+    info.errors.messages
+  end
+
+  io_files1 = logo_image.sample(1)
+
+  io_files1[0...1].each do |f|
+
+    image = File.open(f)
+
+    info.logo.attach io: image, filename: f.split('/').last
+
+    image.close
+  end
+
 
 
 admission = Admission.create(
