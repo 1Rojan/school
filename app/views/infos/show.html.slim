@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong School name:
+  = @info.school_name
+p
+  strong School intro:
+  = @info.school_intro
+p
+  strong School location:
+  = @info.school_location
+p
+  strong Contact:
+  = @info.contact
+p
+  strong Email:
+  = @info.email
+
+=> link_to 'Edit', edit_info_path(@info)
+'|
+=< link_to 'Back', infos_path

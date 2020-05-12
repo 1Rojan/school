@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :infos
   namespace :api do
     namespace :v1 do
       resources :facilities, only: [:index, :show]
@@ -11,7 +12,8 @@ Rails.application.routes.draw do
       resources :about, only: [:index, :show]
       resources :admissions, only: [:index, :show]
       resources :footers, only: [:index, :show]
-      resources :splashes, only: [:index, :show]
+      resources :footers, only: [:index, :show]
+      resources :info, only: [:index, :show]
       post :admissions, to: 'admissions#create'
     end
   end
