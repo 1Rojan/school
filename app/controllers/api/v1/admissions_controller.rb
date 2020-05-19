@@ -27,8 +27,12 @@ class Api::V1::AdmissionsController < ApplicationController
         admission_for: params[:admission_for],
         image: params[:image]
     )
-    if @admission.persisted?
-      render json: 'ok'
+    respond_to do |format|
+      if @admission.save
+        format.json { render :show, status: :created, location: @admission }
+      else
+        format.json { render json: @admission.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
