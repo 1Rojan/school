@@ -41,6 +41,7 @@ np:
             email:
               blank: "कृपया ईमेल भर्नुहोस"
               taken: "ईमेल पहिल्यै लिइएको छ"
+              invalid: "invalid ईमेल"
             address:
               blank: "कृपया ठेगाना भर्नुहोस"
             admission:
