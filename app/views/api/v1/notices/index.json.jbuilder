@@ -5,5 +5,7 @@ json.array! @notices do |notice|
   json.published notice.published
   if notice.image.attached?
     json.image url_for notice.image
+  else
+    json.image nil
   end
 end

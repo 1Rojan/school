@@ -4,4 +4,6 @@ json.description @find_notice.description
 json.published @find_notice.published
 if @find_notice.image.attached?
   json.image url_for @find_notice.image
+else
+  json.image nil
 end
