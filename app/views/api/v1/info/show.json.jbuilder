@@ -6,4 +6,6 @@ json.contact @info.contact
 json.email @info.email
 if @info.logo.attached?
   json.logo url_for @info.logo
+else
+  json.image nil
 end

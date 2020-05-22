@@ -5,4 +5,6 @@
   json.team_category @find_team.team_category
   if @find_team.image.attached?
     json.image url_for @find_team.image
+  else
+    json.image nil
   end

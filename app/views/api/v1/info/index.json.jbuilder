@@ -7,6 +7,8 @@ json.array! @infos do |info|
   json.email  info.email
   if info.logo.attached?
     json.logo url_for info.logo
+  else
+    json.image nil
   end
 
 end

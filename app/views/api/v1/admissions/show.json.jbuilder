@@ -1,6 +1,7 @@
 
 json.name @admission.name
 json.dob @admission.dob
+json.gender @admission.gender
 json.address @admission.address
 json.phone @admission.phone
 json.email @admission.email
@@ -11,4 +12,6 @@ json.father_phone @admission.father_phone
 json.admission_for @admission.admission_for
 if @admission.image.attached?
   json.image @admission.image
+else
+  json.image nil
 end
