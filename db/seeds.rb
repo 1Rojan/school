@@ -28,7 +28,7 @@ end
 
   #user
 admin = User.create(
-  email: 'admin@ideabreed.net',
+  email: 'admin@gmail.com',
   password: 'password',
   username: 'admin')
 
